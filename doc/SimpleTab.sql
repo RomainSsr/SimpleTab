@@ -29,6 +29,17 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `simpletab`.`comments`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `simpletab`.`comments` (
+  `idcomment` INT(11) NOT NULL AUTO_INCREMENT,
+  `contentComment` MEDIUMTEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`idcomment`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `simpletab`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `simpletab`.`users` (
@@ -51,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `simpletab`.`tablatures` (
   `titleTab` VARCHAR(45) NOT NULL,
   `pathTab` VARCHAR(50) NOT NULL,
   `rateTab` DOUBLE NULL DEFAULT '0',
-  `commentTab` MEDIUMTEXT NULL DEFAULT NULL,
-  `linkVideo` VARCHAR(45) NULL,
+  `linkVideo` VARCHAR(45) NULL DEFAULT NULL,
+  `lvlTab` INT(11) NOT NULL,
   `USERS_idUsers` INT(11) NOT NULL,
   `ARTISTS_idArtist` INT(11) NOT NULL,
   PRIMARY KEY (`idTab`),
