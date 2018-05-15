@@ -22,7 +22,7 @@
                     <tr>
                         <td> <small class="text-muted"> Les champs marqués d'un <label style="color: red;">*</label> sont obligatoires</small></td>
                     </tr>
-                </table>
+            </table>
 
 
             </div>
@@ -31,27 +31,27 @@
                 <table class="col">
                     <tr>
                         <td> <label class="text-left">Nom  <label style="color: red;">*</label> : </label></td>
-                        <td class="float-right"> <input type="text"  class=" emptyForbiddenField" id="domainDescription" style="resize: none;" autofocus></td>
+                        <td class="float-right"> <input type="text"  class=" emptyForbiddenField" id="name" style="resize: none;" autofocus></td>
                     </tr>
                     <tr>
                         <td><label class="text-left">Prénom <label style="color: red;">*</label> : </label></td>
-                        <td class="float-right"><input type="text"  class=" emptyForbiddenField" id="domainDescription" style="resize: none;" ></td>
+                        <td class="float-right"><input type="text"  class=" emptyForbiddenField" id="forename" style="resize: none;" ></td>
                     </tr>
                     <tr>
                         <td><label class="text-left">Pseudo<label style="color: red;">*</label> : </label></td>
-                        <td class="float-right"><input type="text"  class=" emptyForbiddenField" id="domainDescription" style="resize: none;" ></td>
+                        <td class="float-right"><input type="text"  class=" emptyForbiddenField" id="pseudo" style="resize: none;" ></td>
                     </tr>
                     <tr>
                         <td><label class="text-left">Email <label style="color: red;">*</label> : </label></td>
-                        <td class="float-right"><input type="text"  class=" emptyForbiddenField" id="domainDescription" style="resize: none;" ></td>
+                        <td class="float-right"><input type="text"  class=" emptyForbiddenField" id="email" style="resize: none;" ></td>
                     </tr>
                     <tr>
                         <td><label class="text-left">Mot de passe <label style="color: red;">*</label> : </label></td>
-                        <td class="float-right"> <input type="text"  class=" emptyForbiddenField" id="domainDescription" style="resize: none;" ></td>
+                        <td class="float-right"> <input type="text"  class=" emptyForbiddenField" id="password" style="resize: none;" ></td>
                     </tr>
                     <tr>
                         <td><label class="text-left">Retapez le mot de passe <label style="color: red;">*</label> : </label></td>
-                        <td class="float-right"><input type="text"  class=" emptyForbiddenField" id="domainDescription" style="resize: none;" ></td>
+                        <td class="float-right"><input type="text"  class=" emptyForbiddenField" id="passwordConfirm" style="resize: none;" ></td>
                     </tr>
                     <tr>
                         <td colspan="2"><button style="color:red;" id="btnAddUser" type="button" class="btn btn-dark col">Rejoindre SimpleTab</button></td>
@@ -107,9 +107,25 @@
     </div>
 </div>
 <!-- END Modal -->
-<script type="text/javascript">
-    function hideModal() {
-        $('#addUser').modal('hide')
-    }
 
+<script src="../js/function.js"></script>
+<script src="../js/utilities.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        function hideModal() {
+            $('#addUser').modal('hide')
+        }
+
+        $('#btnAddUser').click(function () {
+            var name = $('#name').text();
+            var forename = $('#forename').text();
+            var password = $('#password').text();
+            var passwordConfirm = $('#passwordConfirm').text();
+            var email = $('#email').text();
+            var pseudo = $('#pseudo').text();
+            get_data("../controller/addUser",addUser,{'name' :name, 'forename' : forename, 'password' : password,  'email' : email, 'pseudo' : pseudo, 'passwordConfirm' : passwordConfirm},true);
+
+        });
+    });
 </script>

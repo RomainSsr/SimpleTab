@@ -7,9 +7,7 @@
  */
 
 require_once"modals.php";
-require_once"../Model/func.inc.php";
 
-$tabs = getTabAndRelatedArtist();
 $navIdOrButton = "<button type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#addUser\">S'inscrire</button> | <button type=\"button\" class=\"btn btn-light\"data-toggle=\"modal\" data-target=\"#connectUser\">S'identifier</button>";
 $navMenu = "<h5><a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
 ?>
@@ -18,6 +16,7 @@ $navMenu = "<h5><a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\"
 <head>
     <title>Home</title>
     <script            src="https://code.jquery.com/jquery-3.3.1.js"            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="             crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -28,46 +27,46 @@ $navMenu = "<h5><a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\"
 <div class="border ">
     <div class=".col text-right mr-3 mb-0"> <?php echo $navIdOrButton;?>
 
-    <div id="body" class=" mx-5">
-<nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
-    <a class="navbar-brand" href="#">
-        <img src="../public/images/logoSimpleTabGrand.png" alt="logo" width="215" height="125">
-    </a>
+        <div id="body" class=" mx-5">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+                <a class="navbar-brand" href="#">
+                    <img src="../public/images/logoSimpleTabGrand.png" alt="logo" width="215" height="125">
+                </a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto " style="margin: auto;">
-            <li class="nav-item active">
-                <?php echo $navMenu?>
-            </li>
-        </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto " style="margin: auto;">
+                        <li class="nav-item active">
+                            <?php echo $navMenu?>
+                        </li>
+                    </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-            <table>
-                <tr>
-                    <td>
+                    <form class="form-inline my-2 my-lg-0">
+                        <table>
+                            <tr>
+                                <td>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="form-control mr-0" type="radio" name="requirement" checked value="Titre"> Titre
-                        <input class="form-control ml-4" type="radio" name="requirement" value="Artiste"> Artiste
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search">
-                        <button class="btn btn-outline-secondary " type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <label class="form-control border-0 mr-0 "><input  type="radio" name="requirement" checked value="Titre"> Titre</label>
+                                    <label class="form-control border-0 ml-4"><input  type="radio" name="requirement" value="Artiste"> Artiste</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search">
+                                    <button class=" btn btn-outline-secondary " type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </nav>
+        </div>
     </div>
-</nav>
-</div>
-</div>
 </div>
 <div class=" m-5">
     <table class="table table-dark">
@@ -79,29 +78,60 @@ $navMenu = "<h5><a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\"
             <th scope="col">Note</th>
         </tr>
         </thead>
-        <tbody>
-
-            <?php
-            for($i=0;$i < count($tabs);$i++)
-            {
-                echo "<tr>
-                  <td><a id='artistName'>".$tabs[$i]['nameArtist']."</a></td>
-                  <td>".$tabs[$i]['titleTab']."</td>
-                  <td>".getDifficultyInLetters($tabs[$i]['lvlTab'])."</td>
-                  <td>".$tabs[$i]['rateTab']."/5</td>
-                  </tr>";
-            }
-
-
-?>
-
+        <tbody id='tabs'>
         </tbody>
     </table>
 
 </div>
 </body>
 <script src="../js/function.js"></script>
+<script src="../js/utilities.js"></script>
 <script type="text/javascript">
-$('artistName').click(function () {
-    
-})    
+    $(document).ready(function() {
+        get_data("../Model/getTabAndRelatedArtist.php",getTabAndRelatedArtist,{},true);
+        function getTabAndRelatedArtist(data) {
+            $('#tabs').empty();
+            data.forEach(function(tablature){
+                var artist = $('<a class="artistName" >'+ tablature.nameArtist + '</a>');
+                var td = $("<td>").append(artist);
+                var lvl = getDifficultyInLetters(tablature.lvlTab);
+                var tr = $("<tr>").append(td);
+                $(tr).append(
+                    '<td>'+tablature.titleTab+'</td>' +
+                    '<td>'+ lvl +'</td>' +
+                    '<td>'+tablature.rateTab+'</td>' +
+                    '</tr>');
+                $('#tabs').append(tr);
+
+
+                $(artist).click(function () {
+                    var artistName = $(this).text();
+                    get_data("../Model/getTabByArtist.php",getTabByArtist,{'artistName':artistName},false);
+                    function getTabByArtist(data) {
+                        $('#tabs').empty();
+                        data.forEach(function(tablature){
+                            var $lvl = getDifficultyInLetters(tablature.lvlTab);
+                            var $row = $('<tr>' +
+                                '<td><a class="artistName" >'+ tablature.nameArtist+ '</a></td>' +
+                                '<td>'+tablature.titleTab+'</td>' +
+                                '<td>'+ $lvl +'</td>' +
+                                '<td>'+tablature.rateTab+'</td>' +
+                                '</tr>');
+                            $('#tabs').append($row);
+
+                        });
+                    }
+                });
+
+
+            });
+
+
+        }
+        $(window).on('hashchange', function(e){
+            get_data("../Model/getTabAndRelatedArtist.php",getTabAndRelatedArtist,{},true);
+            getTabAndRelatedArtist(data);
+        });
+
+    });
+</script>

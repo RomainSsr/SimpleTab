@@ -6,6 +6,7 @@
  * @param object params     Object qui contient tout les paramètres à envoyer
  * @param boolean async		Pour activer / désactiver l'asynchrone d'un appel ajax
  */
+
 function get_data(url, callback, params = {}, async) {
     // Copier l'objet params dans une variable locale
     // qui sera simplement utilisées pour l'appel Ajax
@@ -49,4 +50,26 @@ function get_data(url, callback, params = {}, async) {
             // Votre gestion de l'erreur
         }
     });
+}
+
+/**
+ * Retourne le niveau de la tablature en toute lettres : 0 -> facile ;  1 -> moyen ; 2 -> difficile
+ * @param $lvlNumber -> le niveau de la tablature en chiffre
+ */
+function getDifficultyInLetters($lvlNumber)
+{
+    switch ($lvlNumber)
+    {
+        case "0":
+            return "Facile";
+            break;
+        case "1":
+            return "Moyen";
+            break;
+
+        case "2":
+            return "Difficile";
+            break;
+
+    }
 }

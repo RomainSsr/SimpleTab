@@ -11,7 +11,7 @@ require_once '../config/conparam.php';
  * @remark	
  */
 
-class EDatabase
+class Database
 {
 	private static $pdoInstance;
 	/**
