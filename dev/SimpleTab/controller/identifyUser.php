@@ -2,38 +2,37 @@
 /**
  * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 15.05.2018
- * Time: 11:24
+ * Date: 16.05.2018
+ * Time: 08:47
  */
 
-/**
- * @copyright romain.ssr@eduge.ch 2018
- * @brief Renvoie la difficulté d'une tablature en toute lettres depuis un chiffre
- */
+session_start();
 
-require_once '../Model/tablatureManager.php';
+require_once '../Model/userManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
 
-// Je récupère le nom de l'artiste
-$lvlTab = "";
+// Je récupère les champs dont j'ai besoin
+$mailOrPseudoUser = "";
+$passwordUser = "";
 
-
-if (isset($_POST['lvlTab']))
+if (isset($_POST['mailOrPseudo']) && isset($_POST['pwdConnexion']))
 {
-    $lvlTab = $_POST['lvlTab'];
-
+    $mailOrPseudoUser = $_POST['mailOrPseudo'];
+    $passwordUser = $_POST['pwdConnexion'];
 }
 
-if ($lvlTab != ""){
-    $difficulty = TablatureManager::getInstance()->getDifficultyInLetters($lvlTab);
-    if ($difficulty === false){
+if ($mailOrPseudoUser != "" || $passwordUser != ""){
+    $success = UserManager::getInstance()->identifyUser($mailOrPseudoUser,$passwordUser);
+    if ($success === false){
         echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
         exit();
     }
+    // l'utilisateur est identifié et sa session est crée
+    $_SESSION['user'] = $success;
 
-    $jsn = json_encode($difficulty);
+    $jsn = json_encode($success);
     // Problème d'encodage Json
     if ($jsn == FALSE){
         $code = json_last_error();

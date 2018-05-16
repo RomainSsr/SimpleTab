@@ -73,3 +73,4 @@ function getDifficultyInLetters($lvlNumber)
 
     }
 }
+

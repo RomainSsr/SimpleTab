@@ -11,7 +11,7 @@
  * @brief Renvoie la difficulté d'une tablature en toute lettres depuis un chiffre
  */
 
-require_once '../controller/userManager.php';
+require_once '../Model/userManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
@@ -28,23 +28,28 @@ $passwordConfirmUser = "";
 
 if (isset($_POST['name']) && isset($_POST['forename']) && isset($_POST['pseudo']) &&isset($_POST['email']) &&isset($_POST['password'])&&isset($_POST['passwordConfirm']) && $_POST['password'] == $_POST['passwordConfirm'])
 {
-    $nameUser = $_POST['name'];
-    $forenameUser = $_POST['forename'];
-    $passwordUser = $_POST['pseudo'];
-    $emailUser = $_POST['email'];
-    $pseudoUser = $_POST['password'];
-    $passwordConfirmUser = $_POST['passwordConfirm'];
+    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        if (checkdnsrr(explode('@',$_POST['email'])[1], 'MX')) {
+            $nameUser = $_POST['name'];
+            $forenameUser = $_POST['forename'];
+            $passwordUser = $_POST['pseudo'];
+            $emailUser = $_POST['email'];
+            $pseudoUser = $_POST['password'];
+            $passwordConfirmUser = $_POST['passwordConfirm'];
+        }
+
+    }
 
 }
 
 if ($nameUser != "" || $forenameUser != "" || $passwordUser != "" || $emailUser != "" || $pseudoUser != "" ){
-    $success = UserManager::getInstance()->addUser($nameUser,$forenameUser,$passwordUser,$emailUser,$pseudoUser);
+    $success = UserManager::getInstance()->addUser($nameUser,$forenameUser,$pseudoUser,$emailUser,$passwordUser);
     if ($success === false){
         echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
         exit();
     }
 
-    $jsn = json_encode($difficulty);
+    $jsn = json_encode($success);
     // Problème d'encodage Json
     if ($jsn == FALSE){
         $code = json_last_error();

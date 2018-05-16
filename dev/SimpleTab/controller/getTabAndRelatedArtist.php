@@ -12,7 +12,7 @@
  * @brief Récupère les tablatures et les artistes
  */
 
-require_once '../controller/tablatureManager.php';
+require_once '../Model/tablatureManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');

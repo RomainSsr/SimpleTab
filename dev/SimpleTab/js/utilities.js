@@ -14,13 +14,25 @@ function getUrlVar(key){
 	return result && unescape(result[1]) || ""; 
 }
 
+function modifyTab(idTab) {
+    alert("modifie la tablature" + idTab);
+}
+function deleteTab(idTab) {
+    alert("supprime la tablature" + idTab);
+}
+
 function hidePopup() {
     // on fait disparaître le popup
 	$('#myModal').hide();
 	$('.modal-backdrop').hide();
 
 }
-
+$('#logo').click(function (){
+    $("#message").slideDown(500); // use slide down for animation
+    setTimeout(function () {
+        $("#message").slideUp(500);
+    }, 2000);
+});
 
 function displayMessage(message,statut)
 {
@@ -31,7 +43,7 @@ function displayMessage(message,statut)
 			{
 			  $(div).attr('class','alert alert-success');
 			  $(div).fadeIn(750);
-			  $(div).html('<span class="glyphicon glyphicon-ok"></span> ' + message);
+			  $(div).html(message);
 			  $(div).css("display", "inline");
 			  $(div).fadeOut(3250);
 			  $('html, body').animate({scrollTop: '0px'}, 300);
@@ -90,4 +102,15 @@ function removeMsgBox()
 	$('.modal-backdrop').remove();
 	$('body').removeClass('modal-open');
 	$('body').attr("style", "");
+}
+
+function identifyUser(pseuoOrMail,password)
+{
+
+    get_data("../controller/identifyUser.php",identifyUser,{'mailOrPseudo' :pseuoOrMail, 'pwdConnexion' : password},true);
+    function identifyUser(data) {
+        data.forEach(function(user) {
+            location.reload();
+        });
+    }
 }

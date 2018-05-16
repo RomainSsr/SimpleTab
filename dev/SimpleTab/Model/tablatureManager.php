@@ -86,7 +86,26 @@ class TablatureManager
         }
     }
 
+    /**
+     * Retourne Un tableau contenant les tablatures et les artistes associés que l'utilisateur a posté ou false si une erreur est survenue
+     *
+     */
+    function getTabAndRelatedArtistPostedByUser($userId)
+    {
+        $db = Database::getInstance();
 
+        try {
+            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist WHERE tablatures.users_idUsers = :userId;");
+            $sql->bindParam(':userId',$userId,PDO::PARAM_INT);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            return $result;
+        }
+
+        catch (PDOException $e) {
+            return false;
+        }
+    }
 
     /**
      * Retourne les tablatures associées à un artiste

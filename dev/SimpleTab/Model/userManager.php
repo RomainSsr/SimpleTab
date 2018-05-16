@@ -27,7 +27,7 @@ class UserManager
      */
     private function __construct ()
     {
-        $this->tablature = array();
+        $this->users = array();
     }
 
     /**
@@ -67,17 +67,26 @@ class UserManager
         return $this->tablature;
     }
 
+    /**
+     * @param $name = le nom de
+     * @param $forename
+     * @param $password
+     * @param $email
+     * @param $pseudo
+     * @return true si l'ajout a fonctionné, sinon false
+     */
     public function addUser($name, $forename, $password,$email,$pseudo)
     {
         $db = Database::getInstance();
-
+        $defaultRole = 0;
         try {
-            $sql = $db->prepare("INSERT INTO users ( nameUser, forenameUser, pwdUser, emailUser, pseudoUser) VALUES (  :name, :forname,:password, :email, :pseudo);");
+            $sql = $db->prepare("INSERT INTO users ( nameUser, forenameUser, pwdUser, emailUser, pseudoUser,role_idrole) VALUES (  :name, :forname,:password, :email, :pseudo,:role);");
             $sql->bindParam(':name', $name, PDO::PARAM_STR);
             $sql->bindParam(':forname', $forename, PDO::PARAM_STR);
             $sql->bindParam(':password', $password, PDO::PARAM_STR);
             $sql->bindParam(':email', $email, PDO::PARAM_STR);
             $sql->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+            $sql->bindParam(':role', $defaultRole, PDO::PARAM_STR);
             $sql->execute();
             return true;
         }
@@ -87,15 +96,17 @@ class UserManager
     }
 
     /**
-     * Retourne Un tableau contenant les tablatures et les artistes associés ou false si une erreur est survenue
+     * Retourne le prénom si l'utilisateur existe en base et que son mot de passe est correct, sinon false.
      *
      */
-    function getTabAndRelatedArtist()
+    function identifyUser($mailOrPseudo, $password)
     {
         $db = Database::getInstance();
 
         try {
-            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist;");
+            $sql = $db->prepare("SELECT * FROM simpletab.users WHERE (users.emailUser = :mailOrPseudo OR users.pseudoUser = :mailOrPseudo) AND  users.pwdUser = :password;");
+            $sql-> bindParam(':mailOrPseudo',$mailOrPseudo,PDO::PARAM_STR);
+            $sql-> bindParam(':password',$password,PDO::PARAM_STR);
             $sql->execute();
             $result = $sql->fetchAll();
             return $result;
@@ -107,31 +118,7 @@ class UserManager
     }
 
 
-
-    /**
-     * Retourne les tablatures associées à un artiste
-     *
-     * @param $artistName
-     *
-     */
-    function sortTabByArtist($artistName)
-    {
-        $db = Database::getInstance();
-
-        try {
-            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist WHERE  artists.nameArtist = :nameArtist;");
-            $sql->bindParam(':nameArtist', $artistName, PDO::PARAM_STR);
-            $sql->execute();
-            $result = $sql->fetchAll();
-            return $result;
-        }
-
-        catch (PDOException $e) {
-            return false;
-        }
-    }
-
-    /** Tableau de tablature */
-    private $tablature;
+    /** Tableau d'utilisateurs */
+    private $users;
 }
 ?>

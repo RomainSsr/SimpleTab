@@ -1,14 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
+/** * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 09.05.2018
- * Time: 16:09
+ * Date: 16.05.2018
+ * Time: 11:10
  */
-
 session_start();
-
-require_once"modals.php";
 
 $navIdOrButton="";
 $navMenu1 = "";
@@ -22,24 +18,17 @@ if(isset($_SESSION['user']))
                                 <a class=\"dropdown-item\" href=\"../controller/destroySession.php\">Déconnexion</a>
                             </div>
                       </div>";
-    if($_SESSION['user'][0]['role_idrole'] == 0)
-    {
-        $navMenu1 = "<h5><a class=\"nav-link\" href=\"../View/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
-        $navMenu2 = "<h5><a class=\"nav-link\" href=\"../View/tablatureManagerPage.php\">Gestion des tablatures </a></h5>";
-    }
-    elseif($_SESSION['user'][0]['role_idrole'] == 1)
-    {
-        $navMenu1 ="<h5><a class=\"nav-link\" href=\"../View/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
-        $navMenu2 = "<h5><a class=\"nav-link\" href=\"#\">Gestion des tablatures et utilisateurs </a></h5>";
-    }
+
+    $navMenu1 = "<h5><a class=\"nav-link\" href=\"../View/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
+    $navMenu2 = "<h5><a class=\"nav-link\" href=\"../View/tablatureManagerPage.php\">Gestion des tablatures </a></h5>";
+
+
 }
 else
 {
-    $navIdOrButton = "<button type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#addUser\">S'inscrire</button> | <button type=\"button\" class=\"btn btn-light\"data-toggle=\"modal\" data-target=\"#connectUser\">S'identifier</button>";
-    $navMenu1 = "<h5><a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
+    header("location: ../View/homePage.php");
 }
 ?>
-<! DOCTYPE HTML>
 <html>
 <head>
     <title>Home</title>
@@ -81,14 +70,14 @@ else
                             </tr>
                             <tr>
                                 <td>
-                                   <label class="form-control border-0 mr-0 "><input  type="radio" name="requirement" checked value="Titre"> Titre</label>
+                                    <label class="form-control border-0 mr-0 "><input  type="radio" name="requirement" checked value="Titre"> Titre</label>
                                     <label class="form-control border-0 ml-4"><input  type="radio" name="requirement" value="Artiste"> Artiste</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <input class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search">
-                                    <button class=" btn btn-outline-secondary " type="submit">
+                                    <button class=" btn btn-outline-secondary " type="submit" id="search">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </td>
@@ -105,6 +94,7 @@ else
 </div>
 </div>
 <div class=" m-5">
+
     <table class="table table-dark">
         <thead style="color:red">
         <tr>
@@ -112,11 +102,14 @@ else
             <th scope="col">Titre</th>
             <th scope="col">Difficulté</th>
             <th scope="col">Note</th>
+            <th scope="col" colspan="2" style="text-align: center">Gestion</th>
         </tr>
         </thead>
         <tbody id='tabs'>
         </tbody>
     </table>
+    </td>
+
 
 </div>
 </body>
@@ -124,74 +117,46 @@ else
 <script src="../js/utilities.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
-
-        get_data("../controller/getTabAndRelatedArtist.php",getTabAndRelatedArtist,{},true);
-        function getTabAndRelatedArtist(data) {
+        var idUser = <?php echo $_SESSION['user'][0]['idUsers'];?>;
+        get_data("../controller/getTabAndRelatedArtistPostedByUser.php",getTabAndRelatedArtistPostedByUser,{'idUser' : idUser},true);
+        function getTabAndRelatedArtistPostedByUser(data) {
             $('#tabs').empty();
-            data.forEach(function(tablature){
-                var artist = $('<a class="artistName" >'+ tablature.nameArtist + '</a>');
+            data.forEach(function (tablature) {
+                var artist = $('<a class="artistName" >' + tablature.nameArtist + '</a>');
                 var td = $("<td>").append(artist);
                 var lvl = getDifficultyInLetters(tablature.lvlTab);
                 var tr = $("<tr>").append(td);
                 $(tr).append(
-                    '<td>'+tablature.titleTab+'</td>' +
-                    '<td>'+ lvl +'</td>' +
-                    '<td>'+tablature.rateTab+'</td>' +
+                    '<td>' + tablature.titleTab + '</td>' +
+                    '<td>' + lvl + '</td>' +
+                    '<td>' + tablature.rateTab + '</td>' +
+                    '<td style="width:1%;"><button  class="btn btn-dark border-0" style="background-color: #20262b;" onclick="deleteTab('+tablature.idTab+')"><i class="fas fa-trash-alt"></i></button></td>'+
+                    '<td style="width:1%;"><button class="btn btn-dark border-0" style="background-color: #20262b;" onclick="modifyTab('+tablature.idTab+')"><i class="fas fa-pencil-alt"></i></button></td>'+
                     '</tr>');
                 $('#tabs').append(tr);
 
 
                 $(artist).click(function () {
                     var artistName = $(this).text();
-                    get_data("../controller/getTabByArtist.php",getTabByArtist,{'artistName':artistName},false);
+                    get_data("../controller/getTabByArtist.php", getTabByArtist, {'artistName': artistName}, false);
+
                     function getTabByArtist(data) {
                         $('#tabs').empty();
-                        data.forEach(function(tablature){
+                        data.forEach(function (tablature) {
                             var $lvl = getDifficultyInLetters(tablature.lvlTab);
                             var $row = $('<tr>' +
-                                '<td><a class="artistName" >'+ tablature.nameArtist+ '</a></td>' +
-                                '<td>'+tablature.titleTab+'</td>' +
-                                '<td>'+ $lvl +'</td>' +
-                                '<td>'+tablature.rateTab+'</td>' +
+                                '<td><a class="artistName" >' + tablature.nameArtist + '</a></td>' +
+                                '<td>' + tablature.titleTab + '</td>' +
+                                '<td>' + $lvl + '</td>' +
+                                '<td>' + tablature.rateTab + '</td>' +
                                 '</tr>');
                             $('#tabs').append($row);
 
                         });
                     }
                 });
-
-
             });
-
-
         }
-
-        function hideModal() {
-            $('#addUser').modal('hide')
-        }
-
-        $('#btnAddUser').click(function () {
-            var name = $('#name').val();
-            var forename = $('#forename').val();
-            var password = $('#password').val();
-            var passwordConfirm = $('#passwordConfirm').val();
-            var email = $('#email').val();
-            var pseudo = $('#pseudo').val();
-            get_data("../controller/addUser.php",addUser,{'name' :name, 'forename' : forename, 'password' : password,  'email' : email, 'pseudo' : pseudo, 'passwordConfirm' : passwordConfirm},true);
-            function addUser(data){
-            identifyUser(pseudo,password);
-                    $('#addUser').modal('hide');
-
-            }
-        });
-
-        $('#btnIdentifyUser').click(function () {
-            var mailOrPseudo = $('#pseudoOrMail').val();
-            var pwdConnexion = $('#pwdConnexion').val();
-           identifyUser(mailOrPseudo,pwdConnexion);
-            $('#connectUser').modal('hide');
-
-        });
 
     });
 </script>
