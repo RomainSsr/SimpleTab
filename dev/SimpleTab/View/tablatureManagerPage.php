@@ -19,19 +19,19 @@ if(isset($_SESSION['user']))
                             </div>
                       </div>";
 
-    $navMenu1 = "<h5><a class=\"nav-link\" href=\"../View/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
-    $navMenu2 = "<h5><a class=\"nav-link\" href=\"../View/tablatureManagerPage.php\">Gestion des tablatures </a></h5>";
+    $navMenu1 = "<h5><a class=\"nav-link\" href=\"../view/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
+    $navMenu2 = "<h5><a class=\"nav-link\" href=\"../view/tablatureManagerPage.php\">Gestion des tablatures </a></h5>";
 
 
 }
 else
 {
-    header("location: ../View/homePage.php");
+    header("location: ../view/homePage.php");
 }
 ?>
 <html>
 <head>
-    <title>Home</title>
+    <title>Gestion des tablatures</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -47,7 +47,7 @@ else
 
         <div id="body" class=" mx-5">
             <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
-                <a class="navbar-brand" href="../View/homePage.php" id="logo">
+                <a class="navbar-brand" href="../view/homePage.php" id="logo">
                     <img src="../public/images/logoSimpleTabGrand.png" alt="logo" width="215" height="125">
                 </a>
 
@@ -60,29 +60,11 @@ else
                             <?php echo $navMenu2?>
                         </li>
                     </ul>
-
-                    <form class="form-inline my-2 my-lg-0">
-                        <table>
-                            <tr>
-                                <td>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="form-control border-0 mr-0 "><input  type="radio" name="requirement" checked value="Titre"> Titre</label>
-                                    <label class="form-control border-0 ml-4"><input  type="radio" name="requirement" value="Artiste"> Artiste</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search">
-                                    <button class=" btn btn-outline-secondary " type="submit" id="search">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
+                    <form class="form-inline my-2 my-lg-0" method="get" action="../view/search.php">
+                        <input class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search" id="searchBar" name="nameArtistOrTitleTab">
+                        <button type="submit" class=" btn btn-outline-secondary ">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </form>
                 </div>
             </nav>

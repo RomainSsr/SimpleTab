@@ -35,7 +35,7 @@ LOCK TABLES `comments` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping data for table `role`
+-- Dumping data for table `roles`
 --
 
 LOCK TABLES `roles` WRITE;
@@ -50,7 +50,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `tablatures` WRITE;
 /*!40000 ALTER TABLE `tablatures` DISABLE KEYS */;
-INSERT INTO `tablatures` VALUES (0,'Perfect','perfect.xml',5,'https://www.youtube.com/watch?v=zSZBmRABm1c',1,0,0),(1,'Halleluja','halleluja.xml',5,'https://www.youtube.com/watch?v=qwFhT56gtek',0,1,1);
+INSERT INTO `tablatures` VALUES (0,'Perfect','0.xml',5,'https://www.youtube.com/watch?v=zSZBmRABm1c',1,0,0),(1,'Halleluja','halleluja.xml',5,'https://www.youtube.com/watch?v=qwFhT56gtek',0,1,2);
 /*!40000 ALTER TABLE `tablatures` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +60,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (0,'Sauser','Romain','toto','romain.ssr@eduge.ch','romainSsr',1),(1,'testNom','testPrenom','testPseudo','testEmail','testMdp',0);
+INSERT INTO `users` VALUES (0,'Sauser','Romain','toto','romain.ssr@eduge.ch','romainSsr',1),(1,'testNom','testPrenom','testPseudo','testEmail','testMdp',0),(2,'Croche','Sahra','titi','sahra.croche@gmail.com','SC',0),(3,'Croche','Sahra','titi','sahra.croche@gmail.com','SC',0),(4,'Tarrou','Jean','tata','jt@gmail.com','JT',0),(5,'xsac','dsadad','sa','asdasdas@gmail.com','asdasd',0),(6,'xsac','dsadad','sa','asdasdas@gmail.com','asdasd',0),(7,'asd','das','das','das@gmail.com','dsa',0),(8,'ds','sda','sa','sa@gmail.com','dadas',0),(9,'Sample Project Copy','Ronaldo','Super2012','Jean-Jaques.Patachon@gmail.com','RoRoDouch',0),(10,'Sample Project Copy','jk','kj','Jean-Jaques.Patachon@gmail.com','k',0),(11,'Sample Project Copy','xaxs','xs','Jean-Jaques.Patachon@gmail.com','xasxas',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -73,4 +73,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-16 10:45:35
+-- Dump completed on 2018-05-17 16:09:16

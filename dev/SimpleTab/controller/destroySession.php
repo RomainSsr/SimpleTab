@@ -10,5 +10,5 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../View/homePage.php")
+header("Location: ../view/homePage.php")
 ?>

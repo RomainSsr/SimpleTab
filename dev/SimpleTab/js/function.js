@@ -74,3 +74,11 @@ function getDifficultyInLetters($lvlNumber)
     }
 }
 
+function modifyTab(idTab)
+{
+    alert("modifie la tablature" + idTab);
+}
+function deleteTab(idTab)
+{
+    alert("supprime la tablature" + idTab);
+}

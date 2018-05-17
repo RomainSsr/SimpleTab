@@ -14,12 +14,7 @@ function getUrlVar(key){
 	return result && unescape(result[1]) || ""; 
 }
 
-function modifyTab(idTab) {
-    alert("modifie la tablature" + idTab);
-}
-function deleteTab(idTab) {
-    alert("supprime la tablature" + idTab);
-}
+
 
 function hidePopup() {
     // on fait disparaître le popup

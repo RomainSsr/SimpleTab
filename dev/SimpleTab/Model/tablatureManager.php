@@ -88,7 +88,7 @@ class TablatureManager
 
     /**
      * Retourne Un tableau contenant les tablatures et les artistes associés que l'utilisateur a posté ou false si une erreur est survenue
-     *
+     * @param $userId -> l'identifiant de l'utilisateur
      */
     function getTabAndRelatedArtistPostedByUser($userId)
     {
@@ -108,7 +108,7 @@ class TablatureManager
     }
 
     /**
-     * Retourne les tablatures associées à un artiste
+     * Retourne les tablatures associées à un artiste, sinon false
      *
      * @param $artistName
      *
@@ -120,6 +120,49 @@ class TablatureManager
         try {
             $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist WHERE  artists.nameArtist = :nameArtist;");
             $sql->bindParam(':nameArtist', $artistName, PDO::PARAM_STR);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            return $result;
+        }
+
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param $tabTitleOrArtistNAme
+     * @return la tablature qui correspond au nom de l'artiste ou au titre de la tablature, sinon false
+     */
+    function getTabAndRelatedArtistByName($tabTitleOrArtistNAme)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist 
+                                           WHERE tablatures.titleTab = :tabTitleOrArtistNAme OR artists.nameArtist = :tabTitleOrArtistNAme;");
+            $sql->bindParam(':tabTitleOrArtistNAme',$tabTitleOrArtistNAme,PDO::PARAM_STR);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            return $result;
+        }
+
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param $titleTab
+     * @return Un tableau contant les informations de la tablature récupérée par son titre
+     */
+    function getTabByTitle($titleTab)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = $db->prepare("SELECT * FROM simpletab.tablatures  WHERE tablatures.titleTab = :titleTab;");
+            $sql->bindParam(':titleTab',$titleTab,PDO::PARAM_STR);
             $sql->execute();
             $result = $sql->fetchAll();
             return $result;

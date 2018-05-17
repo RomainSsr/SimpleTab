@@ -50,12 +50,12 @@ CREATE TABLE `comments` (
   `idcomment` int(11) NOT NULL AUTO_INCREMENT,
   `contentComment` mediumtext,
   `tablatures_idTab` int(11) NOT NULL,
-  `artists_idArtist` int(11) NOT NULL,
+  `users_idUsers` int(11) NOT NULL,
   PRIMARY KEY (`idcomment`),
   KEY `fk_comments_tablatures1_idx` (`tablatures_idTab`),
-  KEY `fk_comments_artists1_idx` (`artists_idArtist`),
-  CONSTRAINT `fk_comments_artists1` FOREIGN KEY (`artists_idArtist`) REFERENCES `artists` (`idartist`),
-  CONSTRAINT `fk_comments_tablatures1` FOREIGN KEY (`tablatures_idTab`) REFERENCES `tablatures` (`idtab`)
+  KEY `fk_comments_users1_idx` (`users_idUsers`),
+  CONSTRAINT `fk_comments_tablatures1` FOREIGN KEY (`tablatures_idTab`) REFERENCES `tablatures` (`idtab`),
+  CONSTRAINT `fk_comments_users1` FOREIGN KEY (`users_idUsers`) REFERENCES `users` (`idusers`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,7 +122,7 @@ CREATE TABLE `tablatures` (
 
 LOCK TABLES `tablatures` WRITE;
 /*!40000 ALTER TABLE `tablatures` DISABLE KEYS */;
-INSERT INTO `tablatures` VALUES (0,'Perfect','perfect.xml',5,'https://www.youtube.com/watch?v=zSZBmRABm1c',1,0,0),(1,'Halleluja','halleluja.xml',5,'https://www.youtube.com/watch?v=qwFhT56gtek',0,1,2);
+INSERT INTO `tablatures` VALUES (0,'Perfect','0.xml',5,'https://www.youtube.com/watch?v=zSZBmRABm1c',1,0,0),(1,'Halleluja','halleluja.xml',5,'https://www.youtube.com/watch?v=qwFhT56gtek',0,1,2);
 /*!40000 ALTER TABLE `tablatures` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-16 16:32:04
+-- Dump completed on 2018-05-17 16:15:10

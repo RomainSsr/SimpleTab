@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 09.05.2018
- * Time: 16:09
+ * Date: 17.05.2018
+ * Time: 08:35
  */
 
 session_start();
@@ -42,7 +42,7 @@ else
 <! DOCTYPE HTML>
 <html>
 <head>
-    <title>Accueil</title>
+    <title>Recherche</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -72,10 +72,10 @@ else
                         </li>
                     </ul>
 
-                    <form class="form-inline my-2 my-lg-0" method="get" action="../view/search.php">
+                    <form class="form-inline my-2 my-lg-0">
 
-                        <input class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search" id="searchBar" name="nameArtistOrTitleTab">
-                        <button type="submit" class=" btn btn-outline-secondary ">
+                        <input class="form-control mr-sm-0" type="search" placeholder="Rechercher" aria-label="Search" id="searchBar">
+                        <button type="button" class=" btn btn-outline-secondary " onclick="search($('#searchBar').val())">
                             <i class="fas fa-search"></i>
                         </button>
 
@@ -109,82 +109,45 @@ else
 <script type="text/javascript">
     $( document ).ready(function() {
 
-        get_data("../controller/getTabAndRelatedArtist.php",getTabAndRelatedArtist,{},true);
-        function getTabAndRelatedArtist(data) {
-            $('#tabs').empty();
-            data.forEach(function(tablature){
-                var artist = $('<a class="artistName" >'+ tablature.nameArtist + '</a>');
-                var td = $("<td>").append(artist);
-                var lvl = getDifficultyInLetters(tablature.lvlTab);
-                var tr = $("<tr>").append(td);
-                $(tr).append(
-                    '<td><a class="titleTab">'+tablature.titleTab+'</a></td>' +
-                    '<td>'+ lvl +'</td>' +
-                    '<td>'+tablature.rateTab+'</td>' +
-                    '</tr>');
-                $('#tabs').append(tr);
+
+            var tabTitleOrArtistNAme = <?php echo '"'; echo $_GET['nameArtistOrTitleTab']; echo '"';?>;
+            get_data("../controller/getTabAndRelatedArtistByName.php",getTabAndRelatedArtistByName,{'tabTitleOrArtistNAme' :tabTitleOrArtistNAme},false);
+            function getTabAndRelatedArtistByName(data)
+            {
+                $('#tabs').empty();
+                data.forEach(function(tablature){
+                    var artist = $('<a class="artistName" >'+ tablature.nameArtist + '</a>');
+                    var td = $("<td>").append(artist);
+                    var lvl = getDifficultyInLetters(tablature.lvlTab);
+                    var tr = $("<tr>").append(td);
+                    $(tr).append(
+                        '<td>'+tablature.titleTab+'</td>' +
+                        '<td>'+ lvl +'</td>' +
+                        '<td>'+tablature.rateTab+'</td>' +
+                        '</tr>');
+                    $('#tabs').append(tr);
 
 
-                $(artist).click(function () {
-                    var artistName = $(this).text();
-                    get_data("../controller/getTabByArtist.php",getTabByArtist,{'artistName':artistName},false);
-                    function getTabByArtist(data) {
-                        $('#tabs').empty();
-                        data.forEach(function(tablature){
-                            var $lvl = getDifficultyInLetters(tablature.lvlTab);
-                            var $row = $('<tr>' +
-                                '<td><a class="artistName" >'+ tablature.nameArtist+ '</a></td>' +
-                                '<td>'+tablature.titleTab+'</td>' +
-                                '<td>'+ $lvl +'</td>' +
-                                '<td>'+tablature.rateTab+'</td>' +
-                                '</tr>');
-                            $('#tabs').append($row);
+                    $(artist).click(function () {
+                        var artistName = $(this).text();
+                        get_data("../controller/getTabByArtist.php",getTabByArtist,{'artistName':artistName},false);
+                        function getTabByArtist(data) {
+                            $('#tabs').empty();
+                            data.forEach(function(tablature){
+                                var $lvl = getDifficultyInLetters(tablature.lvlTab);
+                                var $row = $('<tr>' +
+                                    '<td><a class="artistName" >'+ tablature.nameArtist+ '</a></td>' +
+                                    '<td>'+tablature.titleTab+'</td>' +
+                                    '<td>'+ $lvl +'</td>' +
+                                    '<td>'+tablature.rateTab+'</td>' +
+                                    '</tr>');
+                                $('#tabs').append($row);
 
-                        });
-                    }
+                            });
+                        }
+                    });
                 });
-
-                $('.titleTab').click(function () {
-                    var titleTab = $(this).text();
-                    get_data("../controller/getTabByTitle.php",getTabByTitle,{'titleTab':titleTab},false);
-                    function getTabByTitle(data) {
-                        data.forEach(function(tablature) {
-                            window.location.href= "../view/tablaturePage.php?idTab="+tablature.idTab;
-                        });
-                    }
-                });
-
-
-            });
-
-
-        }
-
-        function hideModal() {
-            $('#addUser').modal('hide')
-        }
-
-        $('#btnAddUser').click(function () {
-            var name = $('#name').val();
-            var forename = $('#forename').val();
-            var password = $('#password').val();
-            var passwordConfirm = $('#passwordConfirm').val();
-            var email = $('#email').val();
-            var pseudo = $('#pseudo').val();
-            get_data("../controller/addUser.php",addUser,{'name' :name, 'forename' : forename, 'password' : password,  'email' : email, 'pseudo' : pseudo, 'passwordConfirm' : passwordConfirm},true);
-            function addUser(data){
-                identifyUser(pseudo,password);
-                $('#addUser').modal('hide');
-
             }
-        });
 
-        $('#btnIdentifyUser').click(function () {
-            var mailOrPseudo = $('#pseudoOrMail').val();
-            var pwdConnexion = $('#pwdConnexion').val();
-            identifyUser(mailOrPseudo,pwdConnexion);
-            $('#connectUser').modal('hide');
-
-        });
     });
 </script>

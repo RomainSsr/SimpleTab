@@ -54,11 +54,9 @@ CREATE TABLE IF NOT EXISTS `simpletab`.`users` (
   INDEX `fk_users_role1_idx` (`role_idrole` ASC),
   CONSTRAINT `fk_users_role1`
     FOREIGN KEY (`role_idrole`)
-    REFERENCES `simpletab`.`roles` (`idrole`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `simpletab`.`roles` (`idrole`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 12
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -94,16 +92,18 @@ CREATE TABLE IF NOT EXISTS `simpletab`.`comments` (
   `idcomment` INT(11) NOT NULL AUTO_INCREMENT,
   `contentComment` MEDIUMTEXT NULL DEFAULT NULL,
   `tablatures_idTab` INT(11) NOT NULL,
-  `artists_idArtist` INT(11) NOT NULL,
+  `users_idUsers` INT(11) NOT NULL,
   PRIMARY KEY (`idcomment`),
   INDEX `fk_comments_tablatures1_idx` (`tablatures_idTab` ASC),
-  INDEX `fk_comments_artists1_idx` (`artists_idArtist` ASC),
-  CONSTRAINT `fk_comments_artists1`
-    FOREIGN KEY (`artists_idArtist`)
-    REFERENCES `simpletab`.`artists` (`idArtist`),
+  INDEX `fk_comments_users1_idx` (`users_idUsers` ASC),
   CONSTRAINT `fk_comments_tablatures1`
     FOREIGN KEY (`tablatures_idTab`)
-    REFERENCES `simpletab`.`tablatures` (`idTab`))
+    REFERENCES `simpletab`.`tablatures` (`idTab`),
+  CONSTRAINT `fk_comments_users1`
+    FOREIGN KEY (`users_idUsers`)
+    REFERENCES `simpletab`.`users` (`idUsers`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
