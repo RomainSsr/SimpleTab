@@ -10,6 +10,7 @@
 require_once '../Model/database.php';
 require_once '../Model/tablature.php';
 
+
 /**
  * @brief Helper class pour gérer les tablatures du site
  *
@@ -170,6 +171,98 @@ class TablatureManager
 
         catch (PDOException $e) {
             return false;
+        }
+    }
+
+    /**
+     * @param $title -> le titre de la tablature
+     * @param $artist -> le nom de l'artiste de la tablature
+     * @param $lvl -> le niveau de la tablature
+     * @param $capo -> la place du capodastre de la tablature (vide si pas de capo)
+     * @param $key -> la tonalité de la tablature (vide si atonale ou inconnue)
+     * @param $tuning -> l'accordage de la tablature
+     * @param $tabBody -> le texte et les accords de la tablature
+     * @param $link -> le lien du tuto YouTube de la tablature
+     * @return true si la tablature a été correctement ajoutée en base, false sinon
+     */
+    function addTab($title, $link, $lvl, $artistId, $userId, $author, $capo,$key,$tuning,$tabBody)
+    {
+        $db = Database::getInstance();
+        $path = "temp.php";
+        try {
+            $db->beginTransaction();
+
+            $sql = $db->prepare("INSERT INTO simpletab.tablatures (titleTab, pathTab, linkVideo, lvlTab, ARTISTS_idArtist, users_idUsers) VALUES (:title, :path, :link,:lvl, :artistId, :idUser);");
+            $sql->bindParam(':title', $title, PDO::PARAM_STR);
+            $sql->bindParam(':path', $path, PDO::PARAM_STR);
+            $sql->bindParam(':link', $link, PDO::PARAM_STR);
+            $sql->bindParam(':lvl', $lvl, PDO::PARAM_STR);
+            $sql->bindParam(':artistId', $artistId, PDO::PARAM_STR);
+            $sql->bindParam(':idUser', $userId, PDO::PARAM_STR);
+            $sql->execute();
+
+            $lastId = $db->lastInsertId();
+            $newPath = $lastId.".php";
+
+            $sql = $db->prepare("UPDATE simpletab.tablatures SET pathTab = :path WHERE idTab = :idTab;");
+            $sql->bindParam(':idTab', $lastId, PDO::PARAM_STR);
+            $sql->bindParam(':path',$newPath , PDO::PARAM_STR);
+            $sql->execute();
+
+            saveTabXML($lastId,$title,$author,$tuning,$capo,$key,$lvl,$link,$tabBody);
+
+            $db->commit();
+            return true;
+        }
+
+        catch (PDOException $e) {
+            $db->rollBack();
+            return false;
+        }
+    }
+
+    function saveTabXML($tabId,$title, $author, $tuning, $capo, $key, $lvl, $link, $tabBody)
+    {
+
+        $tab = fopen('../tabs'.$tabId.'.php','a+');
+
+
+        $tabXml = ' $xmlstr = <<<XML
+                    <?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
+                    <tabs>
+                         <metadata>
+		                        <title> '.$title.' </title>
+                                <author>'.$author.'</author>
+                                <tuning>'.$tuning.'</tuning>
+                                <capo>'.$capo.'</capo>
+                                <key>'.$key.'</key>
+                                <level> '.$lvl.'</level>
+                                <link>'.$link.'</link>
+                         </metadata>
+                        <corpse>'.$tabBody.'</corpse>
+                    </tabs>
+                    XML;';
+
+        ftruncate($tab,0);
+        fputs($tab,$tabXml);
+        fclose($tab);
+    }
+
+    function getDifficultyInLetters($lvl)
+    {
+        switch ($lvl)
+        {
+            case "0":
+                return "Facile";
+                break;
+            case "1":
+                return "Moyen";
+                break;
+
+            case "2":
+                return "Difficile";
+                break;
+
         }
     }
 

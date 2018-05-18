@@ -8,7 +8,7 @@
 
 /**
  * @copyright romain.ssr@eduge.ch 2018
- * @brief Renvoie la difficulté d'une tablature en toute lettres depuis un chiffre
+ * @brief Ajoute un utilisateur en base
  */
 
 require_once '../Model/userManager.php';

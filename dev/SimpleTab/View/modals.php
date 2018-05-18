@@ -107,3 +107,99 @@
     </div>
 </div>
 <!-- END Modal -->
+
+<!-- Modal Add Tab Form -->
+<div class="modal fade " id="addTab" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" style="display: table;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+
+                <h4 class="modal-title " style="text-align: left;">Ajouter une tablature</h4>
+            </div>
+            <div class="modal-body">
+                <table class="col">
+                    <tr>
+                        <td><label class="text-left">Titre: </label></td>
+                        <td><label class="text-left">Auteur: </label></td>
+                        <td><label class="text-left">Difficulté: </label></td>
+                        <td><label class="text-left">Capo: </label></td>
+                        <td><label class="text-left">Tonalité: </label></td>
+                        <td><label class="text-left">Accordage: </label></td>
+                    </tr>
+                    <tr>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="addTitle" style="resize: none;" autofocus></td>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="addArtist" style="resize: none;" ></td>
+                        <td class="pr-2" style="display: inline"><select class="form-control" id="addLvl">
+                                <option value="0">Facile</option>
+                                <option value="1">Moyen</option>
+                                <option value="2">Difficile</option>
+
+                            </select></td>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="addCapo" style="resize: none;" ></td>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="addKey" style="resize: none;" ></td>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="addTuning" style="resize: none;" value="E A D G B E"></td>
+                    </tr>
+                    <tr>
+                        <td>Tablature</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" ><textarea style="resize: vertical; height: 100%; width: 100%;" id="addTablatureBody"></textarea></td>
+                    </tr>
+                    <tr >
+                        <td colspan="1"> Lien du tuto YouTube: </td>
+                        <td colspan="4"><input class=" emptyForbiddenField" id="addLink" style="resize: none; width: 99%;" ></td>
+                        <td colspan="1" ><button style="color:red;" id="btnAddTab" type="button" class="btn btn-dark col mt-2">Ajouter</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Modal -->
+
+<!-- Modal Modify Tab Form -->
+<div class="modal fade bd-example-modal-lg" id="modifyTab" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+
+                <h4 class="modal-title " style="text-align: left;">Modifier une tablature</h4>
+            </div>
+            <div class="modal-body">
+                <table class="col">
+                    <tr>
+                        <td> <label class="text-left">Titre: </label></td>
+                        <td><label class="text-left">Auteur: </label></td>
+                        <td><label class="text-left">Difficulté: </label></td>
+                        <td><label class="text-left">Capo: </label></td>
+                        <td><label class="text-left">Tonalité: </label></td>
+                        <td><label class="text-left">Accordage: </label></td>
+                    </tr>
+                    <tr>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="modifyAuthor" style="resize: none;" ></td>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="modifyLvl" style="resize: none;" ></td>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="modifyCapo" style="resize: none;" ></td>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="modifyKey" style="resize: none;" ></td>
+                        <td class="pr-2"> <input type="text"  class=" emptyForbiddenField" id="modifyTuning" style="resize: none;" ></td>
+                    </tr>
+                    <tr>
+                        <td>Tablature</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"><textarea id="modifyTablatureBody"></textarea></td>
+                    </tr>
+                    <tr >
+                        <td colspan="2"> Lien du tuto YouTube: </td>
+                        <td colspan="3"><input class=" emptyForbiddenField" id="modifyLink" style="resize: none;" ></td>
+                        <td colspan="1" ><button style="color:red;" id="btnModifyTab" type="button" class="btn btn-dark col mt-2">Modifier</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Modal -->

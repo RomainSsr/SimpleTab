@@ -80,6 +80,23 @@ class CommentManager
         }
     }
 
+    function addComment($contentCommment, $tabIdComment, $userIdComment)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = $db->prepare("INSERT INTO simpletab.comments ( contentComment, tablatures_idTab, users_idUsers) VALUES ( :contentComment, :idTab, :idUser);");
+            $sql->bindParam(':contentComment', $contentCommment, PDO::PARAM_STR);
+            $sql->bindParam(':idTab', $tabIdComment, PDO::PARAM_INT);
+            $sql->bindParam(':idUser', $userIdComment, PDO::PARAM_INT);
+            $sql->execute();
+            return true;
+        }
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
     /** Tableau de commentaires */
     private $comments;
 }

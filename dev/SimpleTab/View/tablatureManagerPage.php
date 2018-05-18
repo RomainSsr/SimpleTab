@@ -6,6 +6,8 @@
  */
 session_start();
 
+require_once "../view/modals.php";
+
 $navIdOrButton="";
 $navMenu1 = "";
 $navMenu2 = "";
@@ -74,11 +76,14 @@ else
 <div class="alert alert-success fade show" role="alert" id="message" style="display:none;">
     A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 </div>
-</div>
-<div class=" m-5">
+
+<div class=" m-5" id="tabTable">
 
     <table class="table table-dark">
         <thead style="color:red">
+        <tr class="text-center">
+            <th colspan="6"><button class="btn btn-dark" data-toggle="modal" data-target="#addTab" style="color:red;">Ajouter une tablature</button></a></i></th>
+        </tr>
         <tr>
             <th scope="col">Artiste</th>
             <th scope="col">Titre</th>
@@ -136,6 +141,32 @@ else
 
                         });
                     }
+                });
+
+                $('#btnAddTab').click(function () {
+                    var title = $('#addTitle').val();
+                    var artist = $('#addArtist').val();
+                    var lvl = $('#addLvl option:selected').val();
+                    var capo = $('#addCapo').val();
+                    var key = $('#addKey').val();
+                    var tuning = $('#addTuning').val();
+                    var tabBody = $('#addTablatureBody').val();
+                    var link = $('#addLink').val();
+                    get_data("../controller/addTab.php", addTab, {'addTitle' :title,'addArtist':artist , 'addLvl' :lvl, 'addCapo' :capo, 'addKey' :key, 'addTuning' :tuning, 'addTabBody' :tabBody, 'addLink' :link}, false);
+                    function addTab(data) {
+                        var message = "";
+                        if (data == true) {
+                            message = "<div class=\"alert alert-info\" role=\"alert\">" +
+                                " Votre tablature est en cours d'approbation, elle sera visible si l'administrateur l'accepte.</div>";
+                        }
+                        else {
+                            message = "<div class=\"alert alert-danger text-center\" role=\"alert\">" +
+                                "Un problème est survenu </div>";
+                        }
+                        $('#tabTable').append(message);
+                    }
+
+
                 });
             });
         }

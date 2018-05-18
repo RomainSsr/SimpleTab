@@ -108,8 +108,6 @@ else
 <script src="../js/utilities.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
-
-
             var tabTitleOrArtistNAme = <?php echo '"'; echo $_GET['nameArtistOrTitleTab']; echo '"';?>;
             get_data("../controller/getTabAndRelatedArtistByName.php",getTabAndRelatedArtistByName,{'tabTitleOrArtistNAme' :tabTitleOrArtistNAme},false);
             function getTabAndRelatedArtistByName(data)

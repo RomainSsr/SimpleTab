@@ -7,6 +7,10 @@
  */
 session_start();
 
+if(isset($_SESSION['user']))
+{
+  $userId =  $_SESSION['user'][0]['idUsers'];
+}
 
 if(isset($_GET['idTab']))
 {
@@ -24,8 +28,8 @@ if(isset($_GET['idTab']))
     $link = $tabs->metadata->link;
     $bodyTab = $tabs->corpse;
 
-    $body = "<div id=\"tab\" class=\" p-3 border\" style=\"display: table; margin:0 auto;\">
-    <div id=\"metadatas\" class=\"\">
+    $body = "<div id='tab' class='p-3 border' style='display: table; margin:0 auto;'>
+    <div id='metadatas' >
         <table>
             <tr>
                 <td> Titre :</td>
@@ -53,14 +57,14 @@ if(isset($_GET['idTab']))
             </tr>
         </table>
     </div>
-    <div id=\"tabBody\" >
+    <div id='tabBody' >
         <table>
             <tr>
                 <td>
                     <pre>$bodyTab </pre>
                 </td>
                 <td valign=\"bottom\">
-                    <iframe width=\"400\" height=\"250\" style=\"float: right;\" src= \" $link\">
+                    <iframe width='400' height='250' style='float: right;' src= '$link'>
                     </iframe>
                 </td>
             </tr>
@@ -68,18 +72,20 @@ if(isset($_GET['idTab']))
     </div>
    
 </div>
-</div> 
-<div class=\"  p- 3 border\" style=\" margin:0 auto;\">
-<tr>
-<td id=\"rating\"></td>
-</tr>
-<tr id=\"comments\">
-</tr>
-<tr id='addComment'>
-<td><textarea id='myComment' placeholder='Écrivez votre commentaire ici'></textarea></td>
-</tr>
-</div>
-";
+
+<div class='p- 3 border' style='margin:0 auto;' id='commentSection'>
+    <table>
+     <tr>
+            <td id='rating'> 5/5</td>
+        </tr>
+        <tr>
+            <td id='comments'>Commentaire :</td>
+        </tr>
+        <tr id='addComment'>
+            <td><textarea id='myComment' placeholder='Que pensez-vous de cette tablature ?'></textarea></td><td><button id='postComment'>Soumettre</button></td>
+        </tr>
+    </table>
+</div>";
 
 
 
@@ -177,10 +183,33 @@ else
     $( document ).ready(function() {
         var idTab = <?php echo $_GET['idTab'];?>;
         get_data("../controller/getCommentsByTab.php",getCommentsByTab,{'idTab': idTab},true);
-        function getCommentsByTab(data){
+        function getCommentsByTab(data) {
             data.forEach(function (comment) {
                 $('#comments').append(comment.contentComment);
             });
         }
+        $('#postComment').click(function () {
+            var idUserComment = <?php echo $userId;?>;
+            var idTabComment = <?php echo $idTab;?>;
+            var contentComment = $('#myComment').val();
+            get_data("../controller/addComment.php", addComment, {
+                'contentComment': contentComment,
+                'idTabComment': idTabComment,
+                'idUserComment': idUserComment
+            }, true);
+
+            function addComment(data) {
+                var message = "";
+                if (data == true) {
+                    message = "<div class=\"alert alert-info\" role=\"alert\">" +
+                        " Votre commentaire est en cours d'approbation, il sera visible si l'administrateur l'accepte.</div>";
+                }
+                else {
+                    message = "<div class=\"alert alert-danger text-center\" role=\"alert\">" +
+                        "Un problème est survenu </div>";
+                }
+                $('#commentSection').append(message);
+            }
+        });
     });
 </script>
