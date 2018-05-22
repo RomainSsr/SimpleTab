@@ -9,6 +9,9 @@
 
 require_once '../Model/database.php';
 require_once '../Model/tablature.php';
+require_once '../Model/commentManager.php';
+require_once '../Model/rateManager.php';
+
 
 
 /**
@@ -76,7 +79,7 @@ class TablatureManager
         $db = Database::getInstance();
 
         try {
-            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist;");
+            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist WHERE tablatures.approuved = 1;");
             $sql->execute();
             $result = $sql->fetchAll();
             return $result;
@@ -96,8 +99,28 @@ class TablatureManager
         $db = Database::getInstance();
 
         try {
-            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist WHERE tablatures.users_idUsers = :userId;");
+            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist WHERE (tablatures.users_idUsers = :userId AND tablatures.approuved = 1);");
             $sql->bindParam(':userId',$userId,PDO::PARAM_INT);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            return $result;
+        }
+
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Récupère toutes les tablatures non approuvée (champ approuved =0)
+     * @return un tableau des tablatures non approuvées ou false si échoue
+     */
+    function getAllNonApprouvedTab()
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = $db->prepare("SELECT * FROM simpletab.tablatures JOIN simpletab.artists ON tablatures.ARTISTS_idArtist = artists.idArtist WHERE tablatures.approuved = 0;");
             $sql->execute();
             $result = $sql->fetchAll();
             return $result;
@@ -175,27 +198,28 @@ class TablatureManager
     }
 
     /**
-     * @param $title -> le titre de la tablature
-     * @param $artist -> le nom de l'artiste de la tablature
-     * @param $lvl -> le niveau de la tablature
-     * @param $capo -> la place du capodastre de la tablature (vide si pas de capo)
-     * @param $key -> la tonalité de la tablature (vide si atonale ou inconnue)
-     * @param $tuning -> l'accordage de la tablature
-     * @param $tabBody -> le texte et les accords de la tablature
-     * @param $link -> le lien du tuto YouTube de la tablature
-     * @return true si la tablature a été correctement ajoutée en base, false sinon
+     * Ajoute une tablature en base et dans un fichier php au format XML
+     * @param $title
+     * @param $lvl
+     * @param $artistId
+     * @param $userId
+     * @param $artistName
+     * @param $capo
+     * @param $key
+     * @param $tuning
+     * @param $tabBody
+     * @return true si la tablature a été correctement ajoutée en base et que le fichier xml de la tablature a bien été créé, false sinon
      */
-    function addTab($title, $link, $lvl, $artistId, $userId, $author, $capo,$key,$tuning,$tabBody)
+    function addTab($title, $lvl, $artistId, $userId, $artistName, $capo, $key, $tuning, $tabBody)
     {
         $db = Database::getInstance();
         $path = "temp.php";
         try {
             $db->beginTransaction();
 
-            $sql = $db->prepare("INSERT INTO simpletab.tablatures (titleTab, pathTab, linkVideo, lvlTab, ARTISTS_idArtist, users_idUsers) VALUES (:title, :path, :link,:lvl, :artistId, :idUser);");
+            $sql = $db->prepare("INSERT INTO simpletab.tablatures (titleTab, pathTab, lvlTab, ARTISTS_idArtist, users_idUsers, approuved) VALUES (:title, :path, :lvl, :artistId, :idUser, 0);");
             $sql->bindParam(':title', $title, PDO::PARAM_STR);
             $sql->bindParam(':path', $path, PDO::PARAM_STR);
-            $sql->bindParam(':link', $link, PDO::PARAM_STR);
             $sql->bindParam(':lvl', $lvl, PDO::PARAM_STR);
             $sql->bindParam(':artistId', $artistId, PDO::PARAM_STR);
             $sql->bindParam(':idUser', $userId, PDO::PARAM_STR);
@@ -209,7 +233,32 @@ class TablatureManager
             $sql->bindParam(':path',$newPath , PDO::PARAM_STR);
             $sql->execute();
 
-            saveTabXML($lastId,$title,$author,$tuning,$capo,$key,$lvl,$link,$tabBody);
+            $newPath = "../tabs/$lastId.php";
+            $tab = fopen($newPath,'a+');
+            $lvl = $this->getDifficultyInLetters($lvl);
+
+            $tabXml = '<?php 
+$xmlstr = <<<XML
+<?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
+<tabs>
+     <metadata>
+            <title> '.$title.' </title>
+            <author>'.$artistName.'</author>
+            <tuning>'.$tuning.'</tuning>
+            <capo>'.$capo.'</capo>
+            <key>'.$key.'</key>
+            <level> '.$lvl.'</level>
+     </metadata>
+     <corpse>
+     '.$tabBody.'
+     </corpse>
+</tabs>
+XML;
+?>';
+            $tabXml = str_replace('&','&amp;',$tabXml);
+            ftruncate($tab,0);
+            fputs($tab,$tabXml);
+            fclose($tab);
 
             $db->commit();
             return true;
@@ -221,34 +270,156 @@ class TablatureManager
         }
     }
 
-    function saveTabXML($tabId,$title, $author, $tuning, $capo, $key, $lvl, $link, $tabBody)
+    /**
+     * Modifie une tablature en base ainsi que dans le XML
+     * @param $idTab
+     * @param $title
+     * @param $artistName
+     * @param $artistId
+     * @param $tuning
+     * @param $capo
+     * @param $key
+     * @param $lvl
+     * @param $tabBody
+     * @return true si succès sinon false
+     */
+    function modifyTab($idTab, $title, $artistName,$artistId, $tuning, $capo, $key, $lvl, $tabBody)
     {
+        $db = Database::getInstance();
 
-        $tab = fopen('../tabs'.$tabId.'.php','a+');
+        try {
+            $db->beginTransaction();
+
+            $sql = $db->prepare("UPDATE simpletab.tablatures SET titleTab = :title, lvlTab = :lvl, ARTISTS_idArtist = :idArtist, approuved = 0 WHERE (idTab = :idTab);");
+            $sql->bindParam(':title', $title, PDO::PARAM_STR);
+            $sql->bindParam(':idArtist', $artistId, PDO::PARAM_STR);
+            $sql->bindParam(':lvl', $lvl, PDO::PARAM_INT);
+            $sql->bindParam(':idTab', $idTab, PDO::PARAM_STR);
+            $sql->execute();
+
+            $path = "../tabs/$idTab.php";
 
 
-        $tabXml = ' $xmlstr = <<<XML
-                    <?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
-                    <tabs>
-                         <metadata>
-		                        <title> '.$title.' </title>
-                                <author>'.$author.'</author>
-                                <tuning>'.$tuning.'</tuning>
-                                <capo>'.$capo.'</capo>
-                                <key>'.$key.'</key>
-                                <level> '.$lvl.'</level>
-                                <link>'.$link.'</link>
-                         </metadata>
-                        <corpse>'.$tabBody.'</corpse>
-                    </tabs>
-                    XML;';
+            $tab = fopen($path,'w');
+            $lvl = $this->getDifficultyInLetters($lvl);
 
-        ftruncate($tab,0);
-        fputs($tab,$tabXml);
-        fclose($tab);
+            $tabXml = '<?php 
+$xmlstr = <<<XML
+<?xml version = "1.0" encoding="UTF-8" standalone="yes" ?>
+<tabs>
+     <metadata>
+            <title> '.$title.' </title>
+            <author>'.$artistName.'</author>
+            <tuning>'.$tuning.'</tuning>
+            <capo>'.$capo.'</capo>
+            <key>'.$key.'</key>
+            <level> '.$lvl.'</level>
+     </metadata>
+     <corpse>
+     '.$tabBody.'
+     </corpse>
+</tabs>
+XML;
+?>';
+            $tabXml = str_replace('&','&amp;',$tabXml);
+            ftruncate($tab,0);
+            fputs($tab,$tabXml);
+            fclose($tab);
+
+            $db->commit();
+            return true;
+        }
+
+        catch (PDOException $e) {
+            $db->rollBack();
+            return false;
+        }
     }
 
-    function getDifficultyInLetters($lvl)
+    /**
+     * Supprime une tablature de la base ainsi que son fichier XML
+     * @param $idTab
+     * @return bool
+     */
+    function deleteTab($idTab)
+    {
+        $db = Database::getInstance();
+        $path = "../tabs/$idTab.php";
+
+        try {
+            $db->beginTransaction();
+
+            $successDeleteComment = commentManager::getInstance()->deleteCommentByTabId($idTab);
+            if(!$successDeleteComment)
+            {
+                $db->rollBack();
+            }
+
+            $sql = $db->prepare("DELETE FROM simpletab.tablatures WHERE (idTab = :idTab);");
+            $sql->bindParam(':idTab', $idTab, PDO::PARAM_INT);
+            $sql->execute();
+            $result =unlink($path);
+            if($result)
+            {
+                $db->commit();
+                return true;
+            }
+            else
+            {
+                $db->rollBack();
+            }
+        }
+        catch (PDOException $e) {
+            $db->rollBack();
+            return false;
+        }
+    }
+
+    /**
+     * Passe le champ d'une tablature approuved à 1 ce qui la rend visible pour les utilisateurs
+     * @param $idTab
+     * @return bool
+     */
+    function approuveTab($idTab)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = $db->prepare("UPDATE simpletab.tablatures SET approuved = 1 WHERE (idTab = :idTab);");
+            $sql->bindParam(':idTab',$idTab,PDO::PARAM_INT);
+            $sql->execute();
+            return true;
+        }
+
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    function updateTabRate($idTab)
+    {
+        $db = Database::getInstance();
+        $rates = rateManager::getInstance()->getRateByTabId($idTab);
+
+        try {
+
+
+            $sql = $db->prepare("UPDATE simpletab.tablatures SET approuved = 1 WHERE (idTab = :idTab);");
+            $sql->bindParam(':idTab',$idTab,PDO::PARAM_INT);
+            $sql->execute();
+            return true;
+        }
+
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param $lvl
+     * @return la difficulté en lettre à partir d'un chiffe
+     */
+   function getDifficultyInLetters($lvl)
     {
         switch ($lvl)
         {

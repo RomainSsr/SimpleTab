@@ -104,8 +104,21 @@ function identifyUser(pseuoOrMail,password)
 
     get_data("../controller/identifyUser.php",identifyUser,{'mailOrPseudo' :pseuoOrMail, 'pwdConnexion' : password},true);
     function identifyUser(data) {
-        data.forEach(function(user) {
-            location.reload();
-        });
+    	if(data.length != 0)
+		{
+            data.forEach(function(user) {
+                location.reload();
+            });
+		}
+		else
+		{
+			alert("l'utilisateur n'existe pas ou le mot de passe est incorrect")
+            get_data("../controller/destroySession.php",destroySession,{},true);
+            function destroySession(data)
+			{
+
+			}
+        }
+
     }
 }

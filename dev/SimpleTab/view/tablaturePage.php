@@ -7,9 +7,12 @@
  */
 session_start();
 
+require_once "../view/modals.php";
+
 if(isset($_SESSION['user']))
 {
   $userId =  $_SESSION['user'][0]['idUsers'];
+  $userPseudo = $_SESSION['user'][0]['pseudoUser'];
 }
 
 if(isset($_GET['idTab']))
@@ -20,12 +23,11 @@ if(isset($_GET['idTab']))
 
     $idTab = $_GET['idTab'];
     $title =$tabs->metadata->title;
-    $author =$tabs->metadata->author;
+    $nameArtist =$tabs->metadata->author;
     $tuning = $tabs->metadata->tuning;
     $capo =$tabs->metadata->capo;
     $key =$tabs->metadata->key;
     $lvl =$tabs->metadata->level;
-    $link = $tabs->metadata->link;
     $bodyTab = $tabs->corpse;
 
     $body = "<div id='tab' class='p-3 border' style='display: table; margin:0 auto;'>
@@ -37,7 +39,7 @@ if(isset($_GET['idTab']))
             </tr>
             <tr>
                 <td> Auteur :</td>
-                <td> $author</td>
+                <td> $nameArtist</td>
             </tr>
             <tr>
                 <td> Accordage :</td> 
@@ -63,29 +65,29 @@ if(isset($_GET['idTab']))
                 <td>
                     <pre>$bodyTab </pre>
                 </td>
-                <td valign=\"bottom\">
-                    <iframe width='400' height='250' style='float: right;' src= '$link'>
-                    </iframe>
-                </td>
+               
             </tr>
         </table>
     </div>
-   
-</div>
-
-<div class='p- 3 border' style='margin:0 auto;' id='commentSection'>
-    <table>
-     <tr>
-            <td id='rating'> 5/5</td>
+   <div class='border-top' id='commentSection'>
+    <table class='col'>
+   <tr>
+            <td colspan='2' id='Score' class='text-right'><i id='1' class=\"far fa-star star\"></i><i id='2' class=\"far fa-star star\"></i><i id='3' class=\"far fa-star star\"></i><i id='4' class=\"far fa-star star\"></i><i id='5' class=\"far fa-star star\"></i></td>
         </tr>
-        <tr>
-            <td id='comments'>Commentaire :</td>
+     <tr>
+            <td colspan='2' id='meanScore' class='text-right'> note moyenne : 5</td>
+        </tr>
+        <tr id='comments'>
+            <td colspan='2'>Commentaire :</td>
         </tr>
         <tr id='addComment'>
-            <td><textarea id='myComment' placeholder='Que pensez-vous de cette tablature ?'></textarea></td><td><button id='postComment'>Soumettre</button></td>
+            <td colspan='2'><textarea style='width: 100%;' id='myComment' placeholder='Que pensez-vous de cette tablature ?'></textarea><button style='float: right; display: inline;' id='postComment'>Soumettre</button></td>
         </tr>
     </table>
-</div>";
+</div>
+</div>
+
+";
 
 
 
@@ -101,32 +103,31 @@ else
     $navIdOrButton="";
     $navMenu1 = "";
     $navMenu2 = "";
+$redirect = 1;
 
-    if(isset($_SESSION['user']))
-    {
-        $navIdOrButton = "<div class=\"dropdown\">
+if(isset($_SESSION['user']))
+{
+    $navIdOrButton = "<div class=\"dropdown\">
                             <button type=\"button\" onclick=\" \" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"> ".$_SESSION['user'][0]['pseudoUser']."</button>
                             <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
                                 <a class=\"dropdown-item\" href=\"../controller/destroySession.php\">Déconnexion</a>
                             </div>
                       </div>";
-        if($_SESSION['user'][0]['role_idrole'] == 0)
-        {
-            $navMenu1 = "<h5><a class=\"nav-link\" href=\"../view/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
-            $navMenu2 = "<h5><a class=\"nav-link\" href=\"../view/tablatureManagerPage.php\">Gestion des tablatures </a></h5>";
-        }
-        elseif($_SESSION['user'][0]['role_idrole'] == 1)
-        {
-            $navMenu1 ="<h5><a class=\"nav-link\" href=\"../view/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
-            $navMenu2 = "<h5><a class=\"nav-link\" href=\"#\">Gestion des tablatures et utilisateurs </a></h5>";
-        }
-    }
-    else
+    if($_SESSION['user'][0]['role_idrole'] == 0)
     {
-        $navIdOrButton = "<button type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#addUser\">S'inscrire</button> | <button type=\"button\" class=\"btn btn-light\"data-toggle=\"modal\" data-target=\"#connectUser\">S'identifier</button>";
-        $navMenu1 = "<h5><a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
+        $navMenu1 = "<h5><a class=\"nav-link\" href=\"../view/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
+        $navMenu2 = "<h5><a class=\"nav-link\" href=\"../view/tablatureManagerPage.php\">Gestion des tablatures </a></h5>";
     }
-
+    elseif($_SESSION['user'][0]['role_idrole'] == 1)
+    {
+        $navMenu1 ="<h5><a class=\"nav-link\" href=\"../view/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
+        $navMenu2 = "<h5><a class=\"nav-link\" href=\"../view/tablatureAndUserManagerPage.php\">Gestion des tablatures et utilisateurs </a></h5>";
+    }
+}
+else
+{
+    $redirect = 0;
+}
 
 ?>
 
@@ -148,7 +149,7 @@ else
     <div class=".col text-right mr-3 mb-0"> <?php echo $navIdOrButton;?>
 
         <div id="body" class=" mx-5">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+            <nav class="navbar navbar-expand-lg navbar-light  p-0">
                 <a class="navbar-brand" href="../view/homePage.php" id="logo">
                     <img src="../public/images/logoSimpleTabGrand.png" alt="logo" width="215" height="125">
                 </a>
@@ -182,16 +183,24 @@ else
 <script type="text/javascript">
     $( document ).ready(function() {
         var idTab = <?php echo $_GET['idTab'];?>;
+        var idUserComment = <?php if(isset($userId)){echo $userId;}else{echo -1;} ?>;
+        var idTabComment = <?php  if(isset($idTab)){echo $idTab;}else{echo -1;}?>;
+        var userPseudo = "<?php if(isset($userPseudo)){echo $userPseudo;}else{echo "";} ?>"
+
         get_data("../controller/getCommentsByTab.php",getCommentsByTab,{'idTab': idTab},true);
         function getCommentsByTab(data) {
             data.forEach(function (comment) {
-                $('#comments').append(comment.contentComment);
+                $('#comments').after('<tr class="border-top p-1 m-1"><td ><label><b>'+userPseudo+': </b></label><label> '+comment.contentComment+'</label></td></tr>')
             });
         }
         $('#postComment').click(function () {
-            var idUserComment = <?php echo $userId;?>;
-            var idTabComment = <?php echo $idTab;?>;
+
+
             var contentComment = $('#myComment').val();
+
+
+            if(idUserComment != -1 && idTabComment != -1)
+            {
             get_data("../controller/addComment.php", addComment, {
                 'contentComment': contentComment,
                 'idTabComment': idTabComment,
@@ -199,17 +208,68 @@ else
             }, true);
 
             function addComment(data) {
-                var message = "";
-                if (data == true) {
-                    message = "<div class=\"alert alert-info\" role=\"alert\">" +
-                        " Votre commentaire est en cours d'approbation, il sera visible si l'administrateur l'accepte.</div>";
+
+                if (data == true && userPseudo != "") {
+                    alert("votre commentaire a bien été enregistré !");
                 }
                 else {
-                    message = "<div class=\"alert alert-danger text-center\" role=\"alert\">" +
-                        "Un problème est survenu </div>";
+                    alert("un problème est survenu");
                 }
-                $('#commentSection').append(message);
             }
+            }
+        });
+
+        $('#btnAddUser').click(function () {
+            var name = $('#name').val();
+            var forename = $('#forename').val();
+            var password = $('#password').val();
+            var passwordConfirm = $('#passwordConfirm').val();
+            var email = $('#email').val();
+            var pseudo = $('#pseudo').val();
+            get_data("../controller/addUser.php",addUser,{'name' :name, 'forename' : forename, 'password' : password,  'email' : email, 'pseudo' : pseudo, 'passwordConfirm' : passwordConfirm},true);
+            function addUser(data){
+                identifyUser(pseudo,password);
+                $('#addUser').modal('hide');
+
+            }
+        });
+
+        $('#btnIdentifyUser').click(function () {
+            var mailOrPseudo = $('#pseudoOrMail').val();
+            var pwdConnexion = $('#pwdConnexion').val();
+            identifyUser(mailOrPseudo,pwdConnexion);
+            $('#connectUser').modal('hide');
+
+        });
+
+        $('.star').mouseenter(function () {
+            for(i = $(this).attr('id');i>=1;i--)
+            {
+                $('#'+i).removeClass("far fa-star");
+                $('#'+i).addClass("fas fa-star");
+            }
+
+
+        });
+        $('.star').mouseleave(function () {
+            $(this).removeClass("fas fa-star");
+            $(this).addClass("far fa-star");
+        });
+
+        $('.star').click(function () {
+            var rate = $(this).attr('id');
+
+            get_data("../controller/addRate.php",addRate,{'idUser' :idUserComment, 'idTab' : idTab, 'rate' : rate},true);
+            function addRate(data)
+            {
+                if (data == true && userPseudo != "") {
+                    alert("votre note a bien été enregistrée !");
+                }
+                else {
+                    alert("un problème est survenu");
+                }
+            }
+
         });
     });
 </script>

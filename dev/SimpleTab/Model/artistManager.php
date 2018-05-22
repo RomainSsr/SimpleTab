@@ -54,12 +54,37 @@ class artistManager
         return self::$objInstance;
     }
 
+    /**
+     * @return le tableau des artistes sinon false
+     */
+    function getArtist()
+    {
+
+        $db = Database::getInstance();
+
+        try {
+            $sql = $db->prepare("SELECT artists.nameArtist FROM simpletab.artists");
+            $sql->bindParam(':nameArtist', $nameArtist, PDO::PARAM_STR);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            return $result;
+        }
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Ajoute un artiste en base depuis son nom
+     * @param $nameArtist
+     * @return true si réussi sinon false
+     */
     function addArtist($nameArtist)
     {
         $db = Database::getInstance();
 
         try {
-            $sql = $db->prepare("INSERT INTO simpletab.artists (ameArtist) VALUES ( :nameArtist);");
+            $sql = $db->prepare("INSERT INTO simpletab.artists (nameArtist) VALUES ( :nameArtist);");
             $sql->bindParam(':nameArtist', $nameArtist, PDO::PARAM_STR);
             $sql->execute();
             return true;
@@ -69,6 +94,11 @@ class artistManager
         }
     }
 
+    /**
+     * Récupère un artiste par son nom
+     * @param $nameArtist
+     * @return l'artiste si résussi sinon false
+     */
     function getArtistByName($nameArtist)
     {
         $db = Database::getInstance();
@@ -77,7 +107,8 @@ class artistManager
             $sql = $db->prepare("SELECT * FROM simpletab.artists WHERE artists.nameArtist = :nameArtist;");
             $sql->bindParam(':nameArtist', $nameArtist, PDO::PARAM_STR);
             $sql->execute();
-            return true;
+            $result = $sql->fetchAll();
+            return $result;
         }
         catch (PDOException $e) {
             return false;

@@ -74,11 +74,281 @@ function getDifficultyInLetters($lvlNumber)
     }
 }
 
-function modifyTab(idTab)
+/**
+ * Envoie l'id d'une tablature à la fonction getInfoTab
+ * @param idTab
+ */
+function passTabIdToGetInfosTab(idTab)
 {
-    alert("modifie la tablature" + idTab);
+    get_data("../controller/getInfosTab.php",getInfosTab,{'idTab' : idTab},true);
+    function getInfosTab(data)
+    {
+        if(data != false)
+        {
+            lvlNumber = getDifficultyInNumber(data.metadata.lvl);
+            $('#modifyTitle').val(data.metadata.title);
+            $('#modifyAuthor').val(data.metadata.author);
+            $('#modifyLvl select').val(data.metadata.level);
+            $('#modifyCapo').val(data.metadata.capo);
+            $('#modifyKey').val(data.metadata.key);
+            $('#modifyTuning').val(data.metadata.tuning);
+            $('#modifyTablatureBody').val(data.corpse);
+
+        }
+    }
 }
-function deleteTab(idTab)
+
+/**
+ * Supprime la tablature par son id et rafraichît le tableau des tablatures de l'utilisateur
+ * @param idTab
+ * @param idUser
+ */
+function deleteTabById(idTab, idUser)
 {
-    alert("supprime la tablature" + idTab);
+    get_data("../controller/deleteTabById.php",deleteTabById,{'idTab' : idTab},true);
+    function deleteTabById(data)
+    {
+        var message = "";
+        if (data == true) {
+            message = "<div class=\"alert alert-success text-center\" role=\"alert\">" +
+                " Votre tablature a bien été suprimée.</div>";
+        }
+        else {
+            message = "<div class=\"alert alert-danger text-center\" role=\"alert\">" +
+                "Un problème est survenu </div>";
+        }
+        $('#message').append(message);
+        alert('la tablature a été bien supprimée');
+        reloadTabByUSers(idUser);
+
+    }
+}
+
+/**
+ * Quand l'adinistrateur refuse une tablature, elle est supprimée ainsi que la tablature au format XML
+ * @param idTab
+ */
+function refuseTab(idTab)
+{
+    get_data("../controller/deleteTabById.php",deleteTabById,{'idTab' : idTab},true);
+    function deleteTabById(data)
+    {
+        var message = "";
+        if (data == true) {
+            alert('la tablature a été refusée');
+            getAllNonApprouvedTabs();
+
+        }
+        else {
+            alert('un problème est survenu');
+
+        }
+
+    }
+}
+
+/**
+ * Quand l'adinistrateur accepte une tablature, son champ approuved passe à 1. La tablature devient consultable par tous.
+ * @param idTab
+ */
+function accepTab(idTab)
+{
+    get_data("../controller/approuveTab.php",approuveTab,{'idTab' : idTab},true);
+    function approuveTab(data)
+    {
+        var message = "";
+        if (data == true)
+        {
+            alert('la tablature a été approuvée');
+            getAllNonApprouvedTabs();
+
+        }
+        else
+        {
+            alert('un problème est survenu');
+        }
+
+    }
+}
+
+/**
+ * rafraichît le tableau des tablatures postées par l'utilisateurs par leur ID
+ * @param idUser
+ */
+function reloadTabByUSers(idUser)
+{
+    get_data("../controller/getTabAndRelatedArtistPostedByUser.php",getTabAndRelatedArtistPostedByUser,{'idUser' : idUser},true);
+    function getTabAndRelatedArtistPostedByUser(data) {
+        $('#tabs').empty();
+        data.forEach(function (tablature) {
+            var artist = $('<a class="artistName" >' + tablature.nameArtist + '</a>');
+            var td = $("<td>").append(artist);
+            var lvl = getDifficultyInLetters(tablature.lvlTab);
+            var tr = $("<tr>").append(td);
+            $(tr).append(
+                '<td>' + tablature.titleTab + '</td>' +
+                '<td>' + lvl + '</td>' +
+                '<td>' + tablature.rateTab + '</td>' +
+                '<td style="width:1%;"><button  class="btn btn-dark border-0" style="background-color: #20262b;" onclick="deleteTabById(' + tablature.idTab + ','+idUser+')"><i class="fas fa-trash-alt"></i></button></td>' +
+                '<td style="width:1%;"><button class="btn btn-dark border-0" data-toggle="modal" data-target="#modifyTab" style="background-color: #20262b;" onclick="passTabIdToGetInfosTab(' + tablature.idTab + ')"><i class="fas fa-pencil-alt"></i></button></td>' +
+                '</tr>');
+            $('#tabs').append(tr);
+
+
+            $(artist).click(function () {
+                var artistName = $(this).text();
+                get_data("../controller/getTabByArtist.php", getTabByArtist, {'artistName': artistName}, false);
+
+                function getTabByArtist(data) {
+                    $('#tabs').empty();
+                    data.forEach(function (tablature) {
+                        var $lvl = getDifficultyInLetters(tablature.lvlTab);
+                        var $row = $('<tr>' +
+                            '<td><a class="artistName" >' + tablature.nameArtist + '</a></td>' +
+                            '<td>' + tablature.titleTab + '</td>' +
+                            '<td>' + $lvl + '</td>' +
+                            '<td>' + tablature.rateTab + '</td>' +
+                            '</tr>');
+                        $('#tabs').append($row);
+
+                    });
+                }
+            });
+
+
+        });
+    }
+}
+
+/**
+ * Récupère toutes les tablatures non approuvée (champs approuved = 0)
+ */
+function getAllNonApprouvedTabs()
+{
+    get_data("../controller/getAllNonApprouvedTab.php",getAllNonApprouvedTab,{},true);
+    function getAllNonApprouvedTab(data) {
+        $('#tabs').empty();
+        data.forEach(function (tablature) {
+            var artist = $('<a class="artistName" >' + tablature.nameArtist + '</a>');
+            var td = $("<td>").append(artist);
+            var lvl = getDifficultyInLetters(tablature.lvlTab);
+            var tr = $("<tr>").append(td);
+            $(tr).append(
+                '<td><a class="titleTab">'+tablature.titleTab+'</a></td>' +
+                '<td>' + lvl + '</td>' +
+                '<td>' + tablature.rateTab + '</td>' +
+                '<td style="width:1%;"><button  class="btn btn-dark border-0" style="background-color: #20262b;" onclick="accepTab(' + tablature.idTab +')"><i class="fas fa-check"></i></button></td>' +
+                '<td style="width:1%;"><button class="btn btn-dark border-0"  style="background-color: #20262b;" onclick="refuseTab(' + tablature.idTab + ')"><i class="fas fa-times"></i></button></td>' +
+                '</tr>');
+            $('#tabs').append(tr);
+
+
+            $(artist).click(function () {
+                var artistName = $(this).text();
+                get_data("../controller/getTabByArtist.php", getTabByArtist, {'artistName': artistName}, false);
+
+                function getTabByArtist(data) {
+                    $('#tabs').empty();
+                    data.forEach(function (tablature) {
+                        var $lvl = getDifficultyInLetters(tablature.lvlTab);
+                        var $row = $('<tr>' +
+                            '<td><a class="artistName" >' + tablature.nameArtist + '</a></td>' +
+                            '<td>' + tablature.titleTab + '</td>' +
+                            '<td>' + $lvl + '</td>' +
+                            '<td>' + tablature.rateTab + '</td>' +
+                            '</tr>');
+                        $('#tabs').append($row);
+
+                    });
+                }
+            });
+
+            $('.titleTab').click(function () {
+                var titleTab = $(this).text();
+                get_data("../controller/getTabByTitle.php",getTabByTitle,{'titleTab':titleTab},false);
+                function getTabByTitle(data) {
+                    data.forEach(function(tablature) {
+                        window.location.href= "../view/tablaturePage.php?idTab="+tablature.idTab;
+                    });
+                }
+            });
+        });
+    }
+}
+
+/**
+ * Récupère les utilisateurs et le nombre de tablatures qu'ils ont posté
+ */
+function getUsersAndNbTabPosted()
+{
+    get_data("../controller/getUsersAndNbTabPosted.php",getUsersAndNbTabPosted,{},true);
+    function getUsersAndNbTabPosted(data) {
+        $('#users').empty();
+        data.forEach(function (user) {
+            var pseudo =  user.pseudoUser;
+            var email = user.emailUser;
+            var nbTab = user.nbTab;
+            var tr = $("<tr>");
+            $(tr).append(
+                '<td>' + pseudo + '</td>' +
+                '<td>' + email + '</td>' +
+                '<td>' + nbTab + '</td>' +
+                '<td style="width:1%;"><button class="btn btn-dark border-0"  style="background-color: #20262b;" onclick="deleteUserById(' + user.idUsers + ')"><i class="fas fa-times"></i></button></td>' +
+                '</tr>');
+            $('#users').append(tr);
+        });
+    }
+}
+
+/**
+ * Supprime la tablatures à partir d'un ID
+ * @param idUser
+ */
+function deleteUserById(idUser)
+{
+    get_data("../controller/deleteUserById.php",deleteUserById,{'idUser' : idUser},true);
+    function deleteUserById(data)
+    {
+        var message = "";
+        if (data == true) {
+            alert("l'utilisateur a été supprimé avec succès");
+            getAllNonApprouvedTabs();
+            getUsersAndNbTabPosted();
+
+        }
+        else {
+            alert('un problème est survenu');
+
+        }
+
+    }
+}
+
+function updateTabRate()
+{
+    get_data("../controller/deleteUserById.php",deleteUserById,{'idUser' : idUser},true);
+
+}
+
+/**
+ * Renvoie la difficulté d'une tablature en toute lettres depuis un chiffre
+ * @param $lvlInLetter
+ * @returns le chiffre correspondant à la difficulté
+ */
+function getDifficultyInNumber($lvlInLetter)
+{
+    $lvl = $.trim($lvlInLetter);
+    switch ($lvl)
+    {
+        case "Facile":
+            return 0;
+            break;
+        case "Moyen":
+            return 1;
+            break;
+        case "Difficile":
+            return 2;
+            break;
+    }
+
 }

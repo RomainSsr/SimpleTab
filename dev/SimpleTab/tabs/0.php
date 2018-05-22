@@ -9,7 +9,6 @@ $xmlstr = <<<XML
         <capo> Capo 1</capo>
         <key>Ab</key>
         <level> Facile</level>
-		<link>https://www.youtube.com/watch?v=zSZBmRABm1c</link>
     </metadata>
     <corpse>
     

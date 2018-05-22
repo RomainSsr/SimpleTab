@@ -84,7 +84,10 @@ class Comment implements JsonSerializable
         return $this->userId;
     }
 
-
+    /**
+     * Serialize l'objet en json
+     * @return array|mixed
+     */
     public function jsonSerialize()
     {
         return get_object_vars($this);

@@ -15,19 +15,17 @@ class Tablature implements JsonSerializable
      * @param $InTabTitle Le titre de la tablature
      * @param $InTabPath Le chemin de la tablature au format XML
      * @param $InTabRate La note de la tablature sur 5
-     * @param $InTabVideoLink Le chemin de la vidéo YouTube associée
      * @param $InLvlTab Le niveau de la tablature (0 -> facile; 1-> moyen; 2-> difficile)
      * @param $InUserID L'id de l'utilisateur qui a posté la tablature
      * @param $InArtistID L'id de l'artiste qui a créé la tablature
 
      */
-    public function __construct ($InTabId = - 1, $InTabTitle = "", $InTabPath = "", $InTabRate = -1, $InTabVideoLink = "", $InLvlTab = -1, $InUserID = - 1,$InArtistID = - 1)
+    public function __construct ($InTabId = - 1, $InTabTitle = "", $InTabPath = "", $InTabRate = -1, $InLvlTab = -1, $InUserID = - 1,$InArtistID = - 1)
     {
         $this->id= $InTabId;
         $this->title = $InTabTitle;
         $this->path = $InTabPath;
         $this->rate = $InTabRate;
-        $this->videoLink = $InTabVideoLink;
         $this->lvl = $InLvlTab;
         $this->userId = $InUserID;
         $this->artistId = $InArtistID;
@@ -46,7 +44,7 @@ class Tablature implements JsonSerializable
      */
     public function isValid ()
     {
-        return ( $this->id == -1 || $this->title == "" || $this->path == "" || $this->rate == -1 || $this->videoLink == "" || $this->lvl == -1 || $this->userId == -1 || $this->artistId == -1) ? false : true;
+        return ( $this->id == -1 || $this->title == "" || $this->path == "" || $this->rate == -1 || $this->lvl == -1 || $this->userId == -1 || $this->artistId == -1) ? false : true;
     }
 
     /**
@@ -92,16 +90,6 @@ class Tablature implements JsonSerializable
     /**
      * @brief Getter
      *
-     * @return Le lien YouTube du tuto de la tablature
-     */
-    public function getVideoLink ()
-    {
-        return $this->videoLink;
-    }
-
-    /**
-     * @brief Getter
-     *
      * @return Le niveau de la tablature
      */
     public function getLvl ()
@@ -129,6 +117,10 @@ class Tablature implements JsonSerializable
         return $this->artistId;
     }
 
+    /**
+     * Sérialize l'objet en json
+     * @return array|mixed
+     */
     public function jsonSerialize()
     {
         return get_object_vars($this);
@@ -143,8 +135,6 @@ class Tablature implements JsonSerializable
     private $path;
     /** La note de la tablature sur 5 */
     private $rate;
-    /** Le lien de la vidéo YouTube associée */
-    private $videoLink;
     /** Le niveau de la tablature (0 -> facile; 1-> moyen; 2-> difficile)*/
     private $lvl;
     /** L'id de l'utilisateur qui a posté la tablature */

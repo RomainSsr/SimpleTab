@@ -2,38 +2,43 @@
 /**
  * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 17.05.2018
- * Time: 07:45
+ * Date: 22.05.2018
+ * Time: 15:42
  */
+
 
 /**
  * @copyright romain.ssr@eduge.ch 2018
- * @brief Récupère les tablatures ainsi que leur artiste posté par un utilisateur par leurs nom.
+ * @brief Ajoute une note dans la base
  */
 
-require_once '../Model/tablatureManager.php';
+require_once '../Model/rateManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
 
-$tabTitleOrArtistNAme="";
+$idUser = -1;
+$idTab = -1;
+$rateValue = -1;
 
-if(isset($_POST['tabTitleOrArtistNAme']))
+if(isset($_POST['idUser']) && isset($_POST['idTab']) && isset($_POST['rate']))
 {
-    $tabTitleOrArtistNAme = $_POST['tabTitleOrArtistNAme'];
+    $idUser = $_POST['idUser'];
+    $idTab = $_POST['idTab'];
+    $rateValue = $_POST['rate'];
 }
 
-if($tabTitleOrArtistNAme!="")
+if($idUser!=-1 && $idTab != -1 && $rateValue!=-1)
 {
-    $tablature = TablatureManager::getInstance()->getTabAndRelatedArtistByName($tabTitleOrArtistNAme);
+    $rate = rateManager::getInstance()->addRate($rateValue,$idTab,$idUser);
 }
 
-if ($tablature === false){
+if ($rate === false){
     echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
     exit();
 }
 
-$jsn = json_encode($tablature);
+$jsn = json_encode($rate);
 // Problème d'encodage Json
 if ($jsn == FALSE){
     $code = json_last_error();

@@ -2,38 +2,29 @@
 /**
  * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 17.05.2018
- * Time: 07:45
+ * Date: 22.05.2018
+ * Time: 14:06
  */
 
 /**
  * @copyright romain.ssr@eduge.ch 2018
- * @brief Récupère les tablatures ainsi que leur artiste posté par un utilisateur par leurs nom.
+ * @brief Récupère tous les noms des artistes
  */
 
-require_once '../Model/tablatureManager.php';
+
+require_once '../Model/artistManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
 
-$tabTitleOrArtistNAme="";
 
-if(isset($_POST['tabTitleOrArtistNAme']))
-{
-    $tabTitleOrArtistNAme = $_POST['tabTitleOrArtistNAme'];
-}
-
-if($tabTitleOrArtistNAme!="")
-{
-    $tablature = TablatureManager::getInstance()->getTabAndRelatedArtistByName($tabTitleOrArtistNAme);
-}
-
-if ($tablature === false){
+$artist = artistManager::getInstance()->getArtist();
+if ($artist === false){
     echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
     exit();
 }
 
-$jsn = json_encode($tablature);
+$jsn = json_encode($artist);
 // Problème d'encodage Json
 if ($jsn == FALSE){
     $code = json_last_error();

@@ -2,42 +2,37 @@
 /**
  * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 16.05.2018
- * Time: 08:47
+ * Date: 22.05.2018
+ * Time: 10:14
  */
 
 /**
  * @copyright romain.ssr@eduge.ch 2018
- * @brief Identifie un utilisateur depuis son pseudo ou email et son mot de passe
+ * @brief Récupère l'utilisateur depuis son id
  */
-
-session_start();
 
 require_once '../Model/userManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
 
-// Je récupère les champs dont j'ai besoin
-$mailOrPseudoUser = "";
-$passwordUser = "";
+// Je récupère l'id de l'utilisateur
+$idUser = "";
 
-if (isset($_POST['mailOrPseudo']) && isset($_POST['pwdConnexion']))
+
+if (isset($_POST['idUser']))
 {
-    $mailOrPseudoUser = $_POST['mailOrPseudo'];
-    $passwordUser = $_POST['pwdConnexion'];
+    $idUser = $_POST['idUser'];
 }
 
-if ($mailOrPseudoUser != "" || $passwordUser != ""){
-    $success = UserManager::getInstance()->identifyUser($mailOrPseudoUser,$passwordUser);
-    if ($success === false){
+if ($idUser != ""){
+    $user = userManager::getInstance()->getUserById($idUser);
+    if ($user === false){
         echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
         exit();
     }
-    // l'utilisateur est identifié et sa session est crée
-    $_SESSION['user'] = $success;
 
-    $jsn = json_encode($success);
+    $jsn = json_encode($user);
     // Problème d'encodage Json
     if ($jsn == FALSE){
         $code = json_last_error();

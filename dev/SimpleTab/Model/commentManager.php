@@ -80,6 +80,13 @@ class CommentManager
         }
     }
 
+    /**
+     * Ajoute un commentaire en base
+     * @param $contentCommment
+     * @param $tabIdComment
+     * @param $userIdComment
+     * @return bool
+     */
     function addComment($contentCommment, $tabIdComment, $userIdComment)
     {
         $db = Database::getInstance();
@@ -95,6 +102,26 @@ class CommentManager
         catch (PDOException $e) {
             return false;
         }
+    }
+
+    /**
+     * Efface un commentaire par son Id
+     * @param $idComment
+     * @return bool
+     */
+    function deleteCommentByTabId($idTab)
+    {
+        $db = Database::getInstance();
+        try{
+            $sql = $db->prepare("DELETE  FROM simpletab.comments WHERE comments.tablatures_idTab = :idComment");
+            $sql->bindParam(':idTab', $idTab, PDO::PARAM_INT);
+            $sql->execute();
+            return true;
+        }
+        catch (PDOException $e) {
+            return false;
+        }
+
     }
 
     /** Tableau de commentaires */

@@ -30,13 +30,13 @@ if(isset($_SESSION['user']))
     elseif($_SESSION['user'][0]['role_idrole'] == 1)
     {
         $navMenu1 ="<h5><a class=\"nav-link\" href=\"../view/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
-        $navMenu2 = "<h5><a class=\"nav-link\" href=\"#\">Gestion des tablatures et utilisateurs </a></h5>";
+        $navMenu2 = "<h5><a class=\"nav-link\" href=\"../view/tablatureAndUserManagerPage.php\">Gestion des tablatures et utilisateurs </a></h5>";
     }
 }
 else
 {
     $navIdOrButton = "<button type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#addUser\">S'inscrire</button> | <button type=\"button\" class=\"btn btn-light\"data-toggle=\"modal\" data-target=\"#connectUser\">S'identifier</button>";
-    $navMenu1 = "<h5><a class=\"nav-link\" href=\"#\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
+    $navMenu1 = "<h5><a class=\"nav-link\" href=\"../view/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
 }
 ?>
 <! DOCTYPE HTML>
@@ -57,7 +57,7 @@ else
     <div class=".col text-right mr-3 mb-0"> <?php echo $navIdOrButton;?>
 
         <div id="body" class=" mx-5">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a class="navbar-brand" href="../view/homePage.php" id="logo">
                     <img src="../public/images/logoSimpleTabGrand.png" alt="logo" width="215" height="125">
                 </a>
@@ -85,9 +85,7 @@ else
         </div>
     </div>
 </div>
-<div class="alert alert-success fade show" role="alert" id="message" style="display:none;">
-    A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div>
+
 </div>
 <div class=" m-5">
     <table class="table table-dark">
@@ -159,6 +157,8 @@ else
 
 
         }
+
+
 
         function hideModal() {
             $('#addUser').modal('hide')

@@ -2,40 +2,36 @@
 /**
  * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 16.05.2018
- * Time: 08:47
+ * Date: 22.05.2018
+ * Time: 07:43
  */
 
 /**
  * @copyright romain.ssr@eduge.ch 2018
- * @brief Identifie un utilisateur depuis son pseudo ou email et son mot de passe
+ * @brief Met l'état approuvé d'une tablature à true
  */
 
-session_start();
-
-require_once '../Model/userManager.php';
+require_once '../Model/tablatureManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
 
-// Je récupère les champs dont j'ai besoin
-$mailOrPseudoUser = "";
-$passwordUser = "";
+// Je récupère l'id de la tablature
+$idTab = -1;
 
-if (isset($_POST['mailOrPseudo']) && isset($_POST['pwdConnexion']))
+
+if (isset($_POST['idTab']))
 {
-    $mailOrPseudoUser = $_POST['mailOrPseudo'];
-    $passwordUser = $_POST['pwdConnexion'];
+    $idTab = $_POST['idTab'];
+
 }
 
-if ($mailOrPseudoUser != "" || $passwordUser != ""){
-    $success = UserManager::getInstance()->identifyUser($mailOrPseudoUser,$passwordUser);
+if ($idTab != -1){
+    $success = TablatureManager::getInstance()->approuveTab($idTab);
     if ($success === false){
         echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
         exit();
     }
-    // l'utilisateur est identifié et sa session est crée
-    $_SESSION['user'] = $success;
 
     $jsn = json_encode($success);
     // Problème d'encodage Json
