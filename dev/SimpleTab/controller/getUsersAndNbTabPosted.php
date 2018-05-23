@@ -11,7 +11,7 @@
  * @brief Récupère les utilisateurs et le nombre de tablatures qu'ils ont posté
  */
 
-require_once '../Model/userManager.php';
+require_once '../model/userManager.php';
 
 
 // Nécessaire lorsqu'on retourne du json

@@ -2,39 +2,40 @@
 /**
  * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 22.05.2018
- * Time: 07:45
+ * Date: 23.05.2018
+ * Time: 08:37
  */
+
 
 
 /**
  * @copyright romain.ssr@eduge.ch 2018
- * @brief Supprime l'utilisateur à partir d'un ID
+ * @brief Récupère une tablatures par son id
  */
 
-require_once '../model/userManager.php';
+require_once '../model/tablatureManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
 
-// Je récupère l'id de l'utilisateur
-$idUser = -1;
+// Je récupère le nom de l'artiste
+$idTab = "";
 
 
-if (isset($_POST['idUser']))
+if (isset($_POST['idTab']))
 {
-    $idUser = $_POST['idUser'];
+    $idTab = $_POST['idTab'];
 
 }
 
-if ($idUser != -1){
-    $success = userManager::getInstance()->deleteUserById($idUser);
-    if ($success === false){
+if ($idTab != ""){
+    $tablature = TablatureManager::getInstance()->getTabById($idTab);
+    if ($tablature === false){
         echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
         exit();
     }
 
-    $jsn = json_encode($success);
+    $jsn = json_encode($tablature);
     // Problème d'encodage Json
     if ($jsn == FALSE){
         $code = json_last_error();

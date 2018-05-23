@@ -6,8 +6,8 @@
  * Time: 15:46
  */
 
-require_once '../Model/database.php';
-require_once '../Model/rate.php';
+require_once '../model/database.php';
+require_once '../model/rate.php';
 
 /**
  * @brief Helper class pour gérer les artistes du site
@@ -85,7 +85,7 @@ class rateManager
         $db = Database::getInstance();
 
         try {
-            $sql = $db->prepare("INSERT INTO simpletab.rates (rate,tablature_idTab,users_idUsers) VALUES ( :rate, :idTab, :idUser);");
+            $sql = $db->prepare("INSERT INTO simpletab.rates (rate,tablatures_idTab,users_idUsers) VALUES ( :rate, :idTab, :idUser);");
             $sql->bindParam(':rate', $rate, PDO::PARAM_INT);
             $sql->bindParam(':idTab', $idTab, PDO::PARAM_INT);
             $sql->bindParam(':idUser', $idUser, PDO::PARAM_INT);
@@ -97,6 +97,11 @@ class rateManager
         }
     }
 
+    /**
+     * Récupère la moyenne des notes par l'id d'une tablature
+     * @param $idTab
+     * @return les notes de la tablature si succès sinon false
+     */
     function getRateByTabId($idTab)
     {
         $db = Database::getInstance();
@@ -112,6 +117,31 @@ class rateManager
         }
     }
 
+    /**
+     * Récupère la moyenne des notes par l'id d'un utilisateur
+     * @param $idTab
+     * @return les notes de la tablature si succès sinon false
+     */
+    function getRateByUserId($idUser)
+    {
+        $db = Database::getInstance();
+        try{
+            $sql = $db->prepare("SELECT * FROM simpletab.rates WHERE rates.users_idUsers = :idUser");
+            $sql->bindParam(':idUser', $idUser, PDO::PARAM_INT);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            return $result;
+        }
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Supprime une note par l'id d'une tablature
+     * @param $idTab
+     * @return true si succès sinon false
+     */
     function deleteRateByIdTab($idTab)
     {
         $db = Database::getInstance();
@@ -126,14 +156,15 @@ class rateManager
         }
     }
 
-    function deleteRateByIdUser($idUSer)
+    function getAverageRateByTabId($idTab)
     {
         $db = Database::getInstance();
         try{
-            $sql = $db->prepare("DELETE  FROM simpletab.comments WHERE comments.users_idUsers = :idUser");
-            $sql->bindParam(':idUser', $idUSer, PDO::PARAM_INT);
+            $sql = $db->prepare("SELECT ROUND(AVG(rates.rate)) FROM simpletab.rates WHERE rates.tablatures_idTab = :idTab");
+            $sql->bindParam(':idTab', $idTab, PDO::PARAM_INT);
             $sql->execute();
-            return true;
+            $result = $sql->fetchAll();
+            return $result;
         }
         catch (PDOException $e) {
             return false;

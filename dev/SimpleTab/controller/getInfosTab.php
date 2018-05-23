@@ -14,7 +14,7 @@
 session_start();
 
 
-require_once "../Model/tablatureManager.php";
+require_once "../model/tablatureManager.php";
 
 // Je récupère l'id de la tablature
 $idTab = -1;

@@ -12,7 +12,9 @@
  * @brief Ajoute une note dans la base
  */
 
-require_once '../Model/rateManager.php';
+require_once '../model/rateManager.php';
+require_once '../model/tablatureManager.php';
+
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
@@ -28,12 +30,15 @@ if(isset($_POST['idUser']) && isset($_POST['idTab']) && isset($_POST['rate']))
     $rateValue = $_POST['rate'];
 }
 
-if($idUser!=-1 && $idTab != -1 && $rateValue!=-1)
+if($idUser !=-1 && $idTab != -1 && $rateValue !=-1)
 {
     $rate = rateManager::getInstance()->addRate($rateValue,$idTab,$idUser);
+    $avergageRate = rateManager::getInstance()->getAverageRateByTabId($idTab);
+    $avergageRate =$avergageRate[0][0];
+    $updateRateSuccess = tablatureManager::getInstance()->updateTabRate($avergageRate,$idTab);
 }
 
-if ($rate === false){
+if ($rate === false && $updateRateSuccess === false){
     echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
     exit();
 }

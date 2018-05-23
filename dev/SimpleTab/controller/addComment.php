@@ -11,7 +11,7 @@
  * @brief Ajoute un commentaire en base
  */
 
-require_once '../Model/commentManager.php';
+require_once '../model/commentManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');

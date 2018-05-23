@@ -11,7 +11,7 @@
  * @brief Ajoute un utilisateur en base
  */
 
-require_once '../Model/userManager.php';
+require_once '../model/userManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
@@ -22,7 +22,6 @@ $forenameUser = "";
 $passwordUser = "";
 $emailUser = "";
 $pseudoUser = "";
-$passwordConfirmUser = "";
 
 
 
@@ -32,10 +31,10 @@ if (isset($_POST['name']) && isset($_POST['forename']) && isset($_POST['pseudo']
         if (checkdnsrr(explode('@',$_POST['email'])[1], 'MX')) {
             $nameUser = $_POST['name'];
             $forenameUser = $_POST['forename'];
-            $passwordUser = $_POST['pseudo'];
+            $passwordUser = password_hash($_POST['password'], PASSWORD_BCRYPT);
             $emailUser = $_POST['email'];
-            $pseudoUser = $_POST['password'];
-            $passwordConfirmUser = $_POST['passwordConfirm'];
+            $pseudoUser = $_POST['pseudo'];
+
         }
 
     }
@@ -43,7 +42,7 @@ if (isset($_POST['name']) && isset($_POST['forename']) && isset($_POST['pseudo']
 }
 
 if ($nameUser != "" || $forenameUser != "" || $passwordUser != "" || $emailUser != "" || $pseudoUser != "" ){
-    $success = UserManager::getInstance()->addUser($nameUser,$forenameUser,$pseudoUser,$emailUser,$passwordUser);
+    $success = UserManager::getInstance()->addUser($nameUser,$forenameUser,$passwordUser,$emailUser,$pseudoUser);
     if ($success === false){
         echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
         exit();

@@ -13,7 +13,7 @@
 
 session_start();
 
-require_once '../Model/userManager.php';
+require_once '../model/userManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
@@ -29,15 +29,18 @@ if (isset($_POST['mailOrPseudo']) && isset($_POST['pwdConnexion']))
 }
 
 if ($mailOrPseudoUser != "" || $passwordUser != ""){
-    $success = UserManager::getInstance()->identifyUser($mailOrPseudoUser,$passwordUser);
+    $passwordHashed = UserManager::getInstance()->getPasswordFromEmailOrPseudo($mailOrPseudoUser);
+    $passwordHashed =$passwordHashed[0]['pwdUser'];
+    $success = password_verify($passwordUser, $passwordHashed);
+    $user = userManager::getInstance()->identifyUser($mailOrPseudoUser);
     if ($success === false){
         echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
         exit();
     }
     // l'utilisateur est identifié et sa session est crée
-    $_SESSION['user'] = $success;
+    $_SESSION['user'] = $user;
 
-    $jsn = json_encode($success);
+    $jsn = json_encode($user);
     // Problème d'encodage Json
     if ($jsn == FALSE){
         $code = json_last_error();

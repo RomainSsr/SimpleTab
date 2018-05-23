@@ -11,7 +11,7 @@
  * @brief Met l'état approuvé d'une tablature à true
  */
 
-require_once '../Model/tablatureManager.php';
+require_once '../model/tablatureManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');

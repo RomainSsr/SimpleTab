@@ -123,7 +123,6 @@ else
 </div>
 </body>
 <script src="../js/function.js"></script>
-<script src="../js/utilities.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
 

@@ -13,8 +13,8 @@
 
 session_start();
 
-require_once '../Model/tablatureManager.php';
-require_once '../Model/artistManager.php';
+require_once '../model/tablatureManager.php';
+require_once '../model/artistManager.php';
 
 
 // Nécessaire lorsqu'on retourne du json

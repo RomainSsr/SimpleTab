@@ -6,8 +6,8 @@
  * Time: 12:56
  */
 
-require_once '../Model/database.php';
-require_once '../Model/artist.php';
+require_once '../model/database.php';
+require_once '../model/artist.php';
 
 /**
  * @brief Helper class pour gérer les artistes du site

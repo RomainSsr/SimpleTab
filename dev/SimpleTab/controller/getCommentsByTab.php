@@ -12,7 +12,7 @@
  * @brief Récupère les commentaires à partir d'une tablature
  */
 
-require_once '../Model/commentManager.php';
+require_once '../model/commentManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');
@@ -28,7 +28,7 @@ if (isset($_POST['idTab']))
 }
 
 	if ($idTab != ""){
-        $comment = commentManager::getInstance()->getCommentByTab($idTab);
+        $comment = commentManager::getInstance()->getCommentAndUsersByTab($idTab);
         if ($comment === false){
             echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
             exit();

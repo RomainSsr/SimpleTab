@@ -12,7 +12,7 @@ require_once "../view/modals.php";
 if(isset($_SESSION['user']))
 {
   $userId =  $_SESSION['user'][0]['idUsers'];
-  $userPseudo = $_SESSION['user'][0]['pseudoUser'];
+  $pseudoUSer = $_SESSION['user'][0]['pseudoUser'];
 }
 
 if(isset($_GET['idTab']))
@@ -72,10 +72,9 @@ if(isset($_GET['idTab']))
    <div class='border-top' id='commentSection'>
     <table class='col'>
    <tr>
-            <td colspan='2' id='Score' class='text-right'><i id='1' class=\"far fa-star star\"></i><i id='2' class=\"far fa-star star\"></i><i id='3' class=\"far fa-star star\"></i><i id='4' class=\"far fa-star star\"></i><i id='5' class=\"far fa-star star\"></i></td>
+            <td colspan='2' id='Score' class='text-right'><i id='1' class='far fa-star rateStar'></i><i id='2' class='far fa-star rateStar'></i><i id='3' class='far fa-star rateStar'></i><i id='4' class='far fa-star rateStar'></i><i id='5' class='far fa-star rateStar'></i></td>
         </tr>
-     <tr>
-            <td colspan='2' id='meanScore' class='text-right'> note moyenne : 5</td>
+            <td colspan='2' id=\"averageScore\" class='text-right'> note moyenne : </td>
         </tr>
         <tr id='comments'>
             <td colspan='2'>Commentaire :</td>
@@ -103,7 +102,6 @@ else
     $navIdOrButton="";
     $navMenu1 = "";
     $navMenu2 = "";
-$redirect = 1;
 
 if(isset($_SESSION['user']))
 {
@@ -126,7 +124,8 @@ if(isset($_SESSION['user']))
 }
 else
 {
-    $redirect = 0;
+    $navIdOrButton = "<button type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#addUser\">S'inscrire</button> | <button type=\"button\" class=\"btn btn-light\"data-toggle=\"modal\" data-target=\"#connectUser\">S'identifier</button>";
+    $navMenu1 = "<h5><a class=\"nav-link\" href=\"../view/homePage.php\">Accueil <span class=\"sr-only\">(current)</span></a></h5>";
 }
 
 ?>
@@ -179,20 +178,47 @@ else
 </div>
 <?php echo $body; ?>
 <script src="../js/function.js"></script>
-<script src="../js/utilities.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
         var idTab = <?php echo $_GET['idTab'];?>;
         var idUserComment = <?php if(isset($userId)){echo $userId;}else{echo -1;} ?>;
         var idTabComment = <?php  if(isset($idTab)){echo $idTab;}else{echo -1;}?>;
-        var userPseudo = "<?php if(isset($userPseudo)){echo $userPseudo;}else{echo "";} ?>"
-
+        var pseudoUser = "<?php if(isset($pseudoUSer)){echo $pseudoUSer;}else{echo "";} ?>";
         get_data("../controller/getCommentsByTab.php",getCommentsByTab,{'idTab': idTab},true);
         function getCommentsByTab(data) {
             data.forEach(function (comment) {
-                $('#comments').after('<tr class="border-top p-1 m-1"><td ><label><b>'+userPseudo+': </b></label><label> '+comment.contentComment+'</label></td></tr>')
+                $('#comments').after('<tr class="border-top p-1 m-1"><td ><label><b>'+comment.pseudoUser+': </b></label><label> '+comment.contentComment+'</label></td></tr>')
             });
         }
+
+        get_data("../controller/getRateByTabId.php",getRateByTabId,{'idTab': idTab},true);
+        function getRateByTabId(data)
+        {
+            data.forEach(function (rate) {
+                if (rate.users_idUsers == idUserComment) {
+                    $('#Score').text("Vous avez attribué la note de " + rate.rate );
+                }
+            });
+        }
+
+        get_data("../controller/getTabById.php",getTabById,{'idTab': idTab},true);
+        function getTabById(data) {
+            data.forEach (function (tab) {
+                if(tab.rateTab > 0)
+                {
+                    $('#averageScore').text("note moyenne : "+tab.rateTab);
+                }
+                else
+                {
+                    $('#averageScore').text("La tablature n'est pas notée");
+                }
+            });
+
+
+        }
+
+
+
         $('#postComment').click(function () {
 
 
@@ -216,6 +242,10 @@ else
                     alert("un problème est survenu");
                 }
             }
+            }
+            else
+            {
+                alert("vous devez être connecté pour laisser une appréciation");
             }
         });
 
@@ -242,7 +272,7 @@ else
 
         });
 
-        $('.star').mouseenter(function () {
+        $('.rateStar').mouseenter(function () {
             for(i = $(this).attr('id');i>=1;i--)
             {
                 $('#'+i).removeClass("far fa-star");
@@ -251,25 +281,38 @@ else
 
 
         });
-        $('.star').mouseleave(function () {
+        $('.rateStar').mouseleave(function () {
             $(this).removeClass("fas fa-star");
             $(this).addClass("far fa-star");
         });
 
-        $('.star').click(function () {
-            var rate = $(this).attr('id');
+        $('.rateStar').click(function () {
 
-            get_data("../controller/addRate.php",addRate,{'idUser' :idUserComment, 'idTab' : idTab, 'rate' : rate},true);
-            function addRate(data)
-            {
-                if (data == true && userPseudo != "") {
-                    alert("votre note a bien été enregistrée !");
-                }
-                else {
-                    alert("un problème est survenu");
+            if(idUserComment != -1) {
+                var rate = $(this).attr('id');
+
+                get_data("../controller/addRate.php", addRate, {
+                    'idUser': idUserComment,
+                    'idTab': idTab,
+                    'rate': rate
+                }, true);
+
+                function addRate(data) {
+                    if (data == true && pseudoUser != "") {
+
+                        alert("votre note a bien été enregistrée !");
+                        location.reload();
+                    }
+                    else {
+                        alert("un problème est survenu");
+                    }
                 }
             }
-
+            else
+            {
+                alert("vous devez être connecté pour laisser une appréciation");
+            }
         });
+
     });
 </script>

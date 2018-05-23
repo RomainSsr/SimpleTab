@@ -8,8 +8,8 @@
 
 
 
-require_once '../Model/database.php';
-require_once '../Model/comment.php';
+require_once '../model/database.php';
+require_once '../model/comment.php';
 
 /**
  * @brief Helper class pour gérer les tablatures du site
@@ -63,12 +63,12 @@ class CommentManager
      * @param $idTab -> l'id de la tablature associée au commentaire
      * @return les commentaires associés à la tablature sous forme de tableau ou false si une erreur survient
      */
-    function getCommentByTab($idTab)
+    function getCommentAndUsersByTab($idTab)
     {
         $db = Database::getInstance();
 
         try {
-            $sql = $db->prepare("SELECT * FROM simpletab.comments  WHERE comments.tablatures_idTab = :idTab;");
+            $sql = $db->prepare("SELECT * FROM simpletab.comments JOIN simpletab.users ON comments.users_idUsers = users.idUsers WHERE comments.tablatures_idTab = :idTab;");
             $sql->bindParam(':idTab',$idTab,PDO::PARAM_INT);
             $sql->execute();
             $result = $sql->fetchAll();

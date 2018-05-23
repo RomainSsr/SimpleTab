@@ -7,10 +7,10 @@
  */
 
 
-require_once '../Model/database.php';
-require_once '../Model/tablature.php';
-require_once '../Model/commentManager.php';
-require_once '../Model/rateManager.php';
+require_once '../model/database.php';
+require_once '../model/tablature.php';
+require_once '../model/commentManager.php';
+require_once '../model/rateManager.php';
 
 
 
@@ -68,6 +68,24 @@ class TablatureManager
     public function getTablature()
     {
         return $this->tablature;
+    }
+
+
+    function getTabById($idTab)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = $db->prepare("SELECT * FROM simpletab.tablatures WHERE tablatures.idTab = :idTab;");
+            $sql->bindParam("idTab", $idTab,PDO::PARAM_INT);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            return $result;
+        }
+
+        catch (PDOException $e) {
+            return false;
+        }
     }
 
     /**
@@ -396,16 +414,14 @@ XML;
         }
     }
 
-    function updateTabRate($idTab)
+    function updateTabRate($averageRate, $idTab)
     {
         $db = Database::getInstance();
-        $rates = rateManager::getInstance()->getRateByTabId($idTab);
 
         try {
-
-
-            $sql = $db->prepare("UPDATE simpletab.tablatures SET approuved = 1 WHERE (idTab = :idTab);");
+            $sql = $db->prepare("UPDATE simpletab.tablatures SET rateTab = :averageRate WHERE (idTab = :idTab);");
             $sql->bindParam(':idTab',$idTab,PDO::PARAM_INT);
+            $sql->bindParam(':averageRate',$averageRate,PDO::PARAM_INT);
             $sql->execute();
             return true;
         }

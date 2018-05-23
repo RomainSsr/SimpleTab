@@ -103,7 +103,6 @@ else
 </div>
 </body>
 <script src="../js/function.js"></script>
-<script src="../js/utilities.js"></script>
 <script type="text/javascript">
     $( document ).ready(function() {
 
@@ -125,7 +124,7 @@ else
 
                 $(artist).click(function () {
                     var artistName = $(this).text();
-                    get_data("../controller/getTabByArtist.php",getTabByArtist,{'artistName':artistName},false);
+                    get_data("../controller/getTabByArtist.php",getTabByArtist,{'artistName':artistName},true);
                     function getTabByArtist(data) {
                         $('#tabs').empty();
                         data.forEach(function(tablature){
@@ -144,7 +143,7 @@ else
 
                 $('.titleTab').click(function () {
                     var titleTab = $(this).text();
-                    get_data("../controller/getTabByTitle.php",getTabByTitle,{'titleTab':titleTab},false);
+                    get_data("../controller/getTabByTitle.php",getTabByTitle,{'titleTab':titleTab},true);
                     function getTabByTitle(data) {
                         data.forEach(function(tablature) {
                             window.location.href= "../view/tablaturePage.php?idTab="+tablature.idTab;

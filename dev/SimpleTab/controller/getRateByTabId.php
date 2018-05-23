@@ -2,29 +2,39 @@
 /**
  * Created by PhpStorm.
  * User: SAUSERR_INFO
- * Date: 22.05.2018
- * Time: 14:06
+ * Date: 23.05.2018
+ * Time: 07:45
  */
 
 /**
  * @copyright romain.ssr@eduge.ch 2018
- * @brief Récupère tous les noms des artistes
+ * @brief Récupère les informations des notes par l'id d'une tablature
  */
 
 
-require_once '../model/artistManager.php';
-
-// Nécessaire lorsqu'on retourne du json
-header('Content-Type: application/json');
 
 
-$artist = artistManager::getInstance()->getArtist();
-if ($artist === false){
+require_once "../model/rateManager.php";
+
+// Je récupère l'id de la tablature
+$idTab = -1;
+
+
+if (isset($_POST['idTab']))
+{
+    $idTab = $_POST['idTab'];
+}
+
+if ($idTab != -1) {
+
+    $rate = rateManager::getInstance()->getRateByTabId($idTab);
+}
+if ($rate === false){
     echo '{ "ReturnCode": 2, "Message": "Un problème de récupération des données"}';
     exit();
 }
 
-$jsn = json_encode($artist);
+$jsn = json_encode($rate);
 // Problème d'encodage Json
 if ($jsn == FALSE){
     $code = json_last_error();

@@ -11,7 +11,7 @@
  * @brief Récupère l'utilisateur depuis son id
  */
 
-require_once '../Model/userManager.php';
+require_once '../model/userManager.php';
 
 // Nécessaire lorsqu'on retourne du json
 header('Content-Type: application/json');

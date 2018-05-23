@@ -8,9 +8,9 @@
 
 
 
-require_once '../Model/database.php';
-require_once '../Model/user.php';
-require_once '../Model/tablatureManager.php';
+require_once '../model/database.php';
+require_once '../model/user.php';
+require_once '../model/tablatureManager.php';
 
 /**
  * @brief Helper class pour gérer les utilisateurs du site
@@ -68,6 +68,26 @@ class UserManager
         return $this->users;
     }
 
+    /**
+     * @param $emailOrPseudo
+     * @return le mot de passe de l'utilisateur hashé si succès sinon false
+     */
+    function getPasswordFromEmailOrPseudo($mailOrPseudo)
+    {
+        $db = Database::getInstance();
+
+        try {
+            $sql = $db->prepare("SELECT users.pwdUser FROM simpletab.users WHERE (users.emailUser = :mailOrPseudo OR users.pseudoUser = :mailOrPseudo);");
+            $sql-> bindParam(':mailOrPseudo',$mailOrPseudo,PDO::PARAM_STR);
+            $sql->execute();
+            $result = $sql->fetchAll();
+            return $result;
+        }
+
+        catch (PDOException $e) {
+            return false;
+        }
+    }
 
     /**
      * Récupère les utilisateurs et le nombre de tablatures qu'ils ont postés
@@ -78,7 +98,10 @@ class UserManager
         $db = Database::getInstance();
 
         try {
-            $sql = $db->prepare("SELECT users.idUsers, users.pseudoUser,users.emailUser, count(users_idUsers) as nbTab FROM users LEFT JOIN tablatures ON tablatures.users_idUsers = users.idUsers GROUP BY users_idUsers;");
+            $sql = $db->prepare("SELECT users.idUsers, pseudoUser, emailUser, count(users_idUsers) as nbTab
+                                           FROM users LEFT JOIN tablatures ON (tablatures.users_idUsers = users.idUsers)
+                                           GROUP BY users.idUsers, pseudoUser, emailUser
+                                           ORDER BY count(users_idUsers) DESC, pseudoUser;");
             $sql->execute();
             $result = $sql->fetchAll();
             return $result;
@@ -163,15 +186,15 @@ class UserManager
     }
 
     /**
-     * Retourne le prénom si l'utilisateur existe en base et que son mot de passe est correct, sinon false.
+     * Retourne l'utilisateur s'il existe en base  sinon false.
      *
      */
-    function identifyUser($mailOrPseudo, $password)
+    function identifyUser($mailOrPseudo)
     {
         $db = Database::getInstance();
 
         try {
-            $sql = $db->prepare("SELECT * FROM simpletab.users WHERE (users.emailUser = :mailOrPseudo OR users.pseudoUser = :mailOrPseudo) AND  users.pwdUser = :password;");
+            $sql = $db->prepare("SELECT * FROM simpletab.users WHERE (users.emailUser = :mailOrPseudo OR users.pseudoUser = :mailOrPseudo);");
             $sql-> bindParam(':mailOrPseudo',$mailOrPseudo,PDO::PARAM_STR);
             $sql-> bindParam(':password',$password,PDO::PARAM_STR);
             $sql->execute();
