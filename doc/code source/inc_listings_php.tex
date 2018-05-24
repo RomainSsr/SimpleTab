@@ -1,0 +1,112 @@
+% lst configuration pour php
+%-------------------------------------------------------------------------------------
+% configuration pour le listing
+% http://mirror.switch.ch/ftp/mirror/tex/macros/latex/contrib/listings/listings.pdf
+%-------------------------------------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage[space=true]{accsupp}
+
+% définition des couleurs
+\definecolor{lightgreen}{rgb}	{0.200, 0.980, 0.200}
+\definecolor{darkgreen}{rgb}	{0.000, 0.400, 0.000}
+\definecolor{lightgray}{gray}	{0.98}
+\definecolor{darkred}{rgb}		{0.545, 0.000, 0.000}
+
+% code couleur spécifique CSharp
+\definecolor{class}{rgb}		{0.200, 0.600, 0.600}	% Cyan Visual Studio
+\definecolor{keyword}{rgb}		{0.000, 0.000, 1.000}	% blue
+
+
+
+% configuration mise en forme
+\lstset {	
+  language=PHP
+, captionpos=b
+, frame=lines
+, basicstyle=\scriptsize\ttfamily
+, keywordstyle=\color{blue}
+, commentstyle=\color{darkgreen}
+, stringstyle=\color{darkred}
+, backgroundcolor=\color{lightgray}
+, numbers=left
+, numberstyle=\noncopynumber
+, stepnumber=1
+, numbersep=5pt
+, breaklines=true
+, tabsize=2
+, showstringspaces=false
+, frame=shadowbox
+, rulesepcolor=\color{gray}
+, lineskip={-1.5pt} % single line spacing
+, escapeinside={/*(*@}{@*)*/}
+, rangeprefix=\{\  % curly left brace plus space
+, rangesuffix=\ \} % space plus curly right brace
+}
+
+% Copy / paste
+
+% Suppression des nombres dans les copy/paste
+% modifier dans \lstset{numberstyle=\noncopynumber}
+\newcommand{\noncopynumber}[1]{%
+    \BeginAccSupp{method=escape,ActualText={}}%
+    {\scriptsize#1}%
+    \EndAccSupp{}%
+}
+
+% copy / paste avec respect des espaces
+\lstset{columns=flexible}
+\lstset{keepspaces=true}
+\makeatletter
+\def\lst@outputspace{{\ifx\lst@bkgcolor\empty\color{white}\else\lst@bkgcolor\fi\lst@visiblespace}}
+\makeatother
+
+% gestion des mots clefs ou mise en évidence (spécifique C#)
+\lstset{
+	morekeywords={
+		require_once, function, try, catch, return,
+		Exception,
+		%HTML
+		doctype, html, head, body, header, footer, section, article, script, nav, sidebar,
+		meta, title, div, span, 
+		p, a, href, rel, src, width, height
+	},
+	otherkeywords={\#region,\#endregion,\#define,\#if,\#endif,\#else}, %morekeyword does not support # chararacter then we must use otherkeywords
+	emph={[1]
+		emphaseme,
+		},
+	emphstyle={[1]\color{class}}
+}
+
+\lstset{prebreak=\raisebox{0ex}[0ex][0ex]
+        {\ensuremath{\hookleftarrow}}}
+%\lstset{postbreak=\raisebox{0ex}[0ex][0ex]
+%        {\ensuremath{\hookrightarrow\space}}}
+\lstset{breaklines=true, breakatwhitespace=true}
+
+% replace sequence of char by another sequence of char
+% see http://stackoverflow.com/questions/1116266/listings-in-latex-with-utf-8-or-at-least-german-umlauts
+\lstset{literate=%
+{Ã¤}{{\"a}}1
+{Ã¢}{{\^a}}1
+{Ã }{{\`a}}1
+{Ã«}{{\"e}}1
+{Ãª}{{\^e}}1
+{Ã©}{{\'e}}1
+{Ã¨}{{\`e}}1
+{Ã¯}{{\"i}}1
+{Ã®}{{\^i}}1
+{Ã¶}{{\"o}}1
+{Ã´}{{\^o}}1
+{Ã¹}{{\`u}}1
+{Ã¼}{{\"u}}1
+{Ã»}{{\^u}}1
+{Ã§}{{\c c}}1
+{Â°}{{\textsuperscript{o}}}1
+% suppress BOM (Byte Order Mark) characters at the beginning of Visual Studio source
+% see http://tex.stackexchange.com/questions/5935/how-to-suppress-bom-effect-in-the-output
+{ï}{}0
+{»}{}0
+{¿}{}0
+}

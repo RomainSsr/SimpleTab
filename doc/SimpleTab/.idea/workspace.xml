@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="517dd3bd-e57c-49fa-8ddd-4df17057e1ed" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="tablatureManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/tablatureManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4871">
+              <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+              <folding>
+                <marker date="1527152327139" expanded="true" signature="1578:1644" ph="SELECT * FRO... tablatures" />
+                <marker date="1527152327139" expanded="true" signature="2162:2300" ph="SELECT * FRO... tablatures" />
+                <marker date="1527152327139" expanded="true" signature="2851:3030" ph="SELECT * FRO... tablatures" />
+                <marker date="1527152327139" expanded="true" signature="3577:3715" ph="SELECT * FRO... tablatures" />
+                <marker date="1527152327139" expanded="true" signature="4163:4310" ph="SELECT * FRO... tablatures" />
+                <marker date="1527152327139" expanded="true" signature="4887:5068" ph="SELECT * FRO... tablatures" />
+                <marker date="1527152327139" expanded="true" signature="4887:5134" ph="SELECT * FRO... tablatures" />
+                <marker date="1527152327139" expanded="true" signature="5677:5750" ph="SELECT * FRO... tablatures" />
+                <marker date="1527152327139" expanded="true" signature="6687:6843" ph="INSERT INTO simpletab.tablatures... " />
+                <marker date="1527152327139" expanded="true" signature="7311:7379" ph="UPDATE simpl... " />
+                <marker date="1527152327139" expanded="true" signature="7797:8115" ph="..." />
+                <marker date="1527152327139" expanded="true" signature="7813:8060" ph="..." />
+                <marker date="1527152327139" expanded="true" signature="8074:8107" ph="..." />
+                <marker date="1527152327139" expanded="true" signature="8986:9118" ph="UPDATE simpl... " />
+                <marker date="1527152327139" expanded="true" signature="9656:9974" ph="..." />
+                <marker date="1527152327139" expanded="true" signature="9672:9919" ph="..." />
+                <marker date="1527152327139" expanded="true" signature="9933:9966" ph="..." />
+                <marker date="1527152327139" expanded="true" signature="10768:10823" ph="DELETE FROM " />
+                <marker date="1527152327139" expanded="true" signature="11542:11610" ph="UPDATE simpl... " />
+                <marker date="1527152327139" expanded="true" signature="11960:12037" ph="UPDATE simpl... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modifyTabById.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/modifyTabById.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-153">
+              <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tablatureManagerPage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/tablatureManagerPage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1386">
+              <caret line="5" column="49" lean-forward="false" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+              <folding>
+                <marker date="1527160430393" expanded="true" signature="335:840" ph="..." />
+                <marker date="1527160430393" expanded="true" signature="659:811" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="homePage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/homePage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="165" column="8" lean-forward="false" selection-start-line="165" selection-start-column="8" selection-end-line="210" selection-end-column="11" />
+              <folding>
+                <element signature="e#6#126#0#PHP" expanded="true" />
+                <marker date="1527159959284" expanded="true" signature="301:806" ph="..." />
+                <marker date="1527159959284" expanded="true" signature="625:777" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modals.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/modals.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-323">
+              <caret line="89" column="18" lean-forward="true" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
+              <folding>
+                <element signature="e#6#118#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getUserById.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/getUserById.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="770">
+              <caret line="49" column="2" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="49" selection-end-column="2" />
+              <folding>
+                <element signature="e#6#86#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/search.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="96" column="43" lean-forward="true" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
+              <folding>
+                <element signature="e#6#135#0#PHP" expanded="true" />
+                <marker date="1527160430482" expanded="true" signature="311:816" ph="..." />
+                <marker date="1527160430482" expanded="true" signature="635:787" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="function.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/function.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-73">
+              <caret line="318" column="5" lean-forward="false" selection-start-line="318" selection-start-column="5" selection-end-line="318" selection-end-column="5" />
+              <folding>
+                <marker date="1527165176642" expanded="true" signature="6487:6496" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="6544:6570" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="6710:6719" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="6811:6837" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="8681:8690" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="8738:8764" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="8883:8892" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="8940:8966" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="10250:10259" ph="..." />
+                <marker date="1527165176642" expanded="true" signature="10307:10333" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getUserByEmail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/getUserByEmail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tablaturePage.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/tablaturePage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="238" column="32" lean-forward="false" selection-start-line="238" selection-start-column="32" selection-end-line="238" selection-end-column="32" />
+              <folding>
+                <element signature="e#6#136#0#PHP" expanded="true" />
+                <marker date="1527171713184" expanded="false" signature="793:823" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="824:2584" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="849:1523" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="866:1512" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="883:968" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="985:1076" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1093:1184" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1201:1285" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1302:1389" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1406:1495" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1546:1726" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1563:1715" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1580:1698" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1601:1664" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1774:2577" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1798:2570" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="1806:2099" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="2229:2290" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="2319:2557" ph="..." />
+                <marker date="1527171713184" expanded="false" signature="2366:2378" ph="..." />
+                <marker date="1527171713184" expanded="false" signature="2472:2502" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="2676:2895" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="3042:3547" ph="..." />
+                <marker date="1527171713184" expanded="true" signature="3366:3518" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>\n</find>
+      <find>domain</find>
+      <find>View</find>
+      <find>header</find>
+      <find>\</find>
+      <find>\&quot;</find>
+      <find>togg</find>
+      <find>youtube</find>
+      <find>link</find>
+      <find>bg-light</find>
+      <find>modify</find>
+      <find>note</find>
+      <find>rateStar</find>
+      <find>addUser</find>
+      <find>getRateByUserId</find>
+      <find>display</find>
+      <find>utilities</find>
+      <find>model</find>
+      <find>rate</find>
+      <find>btnAddUser</find>
+      <find>false</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>/</replace>
+      <replace>view</replace>
+      <replace>'</replace>
+      <replace />
+      <replace>model</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\SAUSERR_INFO\Documents\GitHub\SimpleTab\dev\SimpleTab</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Model/tablatureManager.php" />
+        <option value="$PROJECT_DIR$/Model/userManager.php" />
+        <option value="$PROJECT_DIR$/js/utilities.js" />
+        <option value="$PROJECT_DIR$/js/function.js" />
+        <option value="$PROJECT_DIR$/config/conparam.php" />
+        <option value="$PROJECT_DIR$/controller/addRate.php" />
+        <option value="$PROJECT_DIR$/controller/addComment.php" />
+        <option value="$PROJECT_DIR$/controller/addTab.php" />
+        <option value="$PROJECT_DIR$/controller/addUser.php" />
+        <option value="$PROJECT_DIR$/controller/approuveTab.php" />
+        <option value="$PROJECT_DIR$/controller/deleteTabById.php" />
+        <option value="$PROJECT_DIR$/controller/deleteUserById.php" />
+        <option value="$PROJECT_DIR$/controller/destroySession.php" />
+        <option value="$PROJECT_DIR$/controller/getAllNonApprouvedTab.php" />
+        <option value="$PROJECT_DIR$/controller/getArtistNames.php" />
+        <option value="$PROJECT_DIR$/controller/getCommentsByTab.php" />
+        <option value="$PROJECT_DIR$/controller/getDifficultyInLetters.php" />
+        <option value="$PROJECT_DIR$/controller/getInfosTab.php" />
+        <option value="$PROJECT_DIR$/controller/getRateByTabId.php" />
+        <option value="$PROJECT_DIR$/controller/getRateByUserId.php" />
+        <option value="$PROJECT_DIR$/controller/getTabAndRelatedArtist.php" />
+        <option value="$PROJECT_DIR$/controller/getTabAndRelatedArtistByName.php" />
+        <option value="$PROJECT_DIR$/controller/getTabAndRelatedArtistPostedByUser.php" />
+        <option value="$PROJECT_DIR$/controller/getTabByArtist.php" />
+        <option value="$PROJECT_DIR$/controller/getTabById.php" />
+        <option value="$PROJECT_DIR$/controller/getTabByTitle.php" />
+        <option value="$PROJECT_DIR$/controller/getUserById.php" />
+        <option value="$PROJECT_DIR$/controller/getUsersAndNbTabPosted.php" />
+        <option value="$PROJECT_DIR$/controller/identifyUser.php" />
+        <option value="$PROJECT_DIR$/controller/modifyTabById.php" />
+        <option value="$PROJECT_DIR$/controller/updateTabRate.php" />
+        <option value="$PROJECT_DIR$/model/artist.php" />
+        <option value="$PROJECT_DIR$/model/artistManager.php" />
+        <option value="$PROJECT_DIR$/model/comment.php" />
+        <option value="$PROJECT_DIR$/model/commentManager.php" />
+        <option value="$PROJECT_DIR$/model/rate.php" />
+        <option value="$PROJECT_DIR$/model/rateManager.php" />
+        <option value="$PROJECT_DIR$/model/tablature.php" />
+        <option value="$PROJECT_DIR$/model/tablatureManager.php" />
+        <option value="$PROJECT_DIR$/model/user.php" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/view/tablatureAndUserManagerPage.php" />
+        <option value="$PROJECT_DIR$/view/tablatureManagerPage.php" />
+        <option value="$PROJECT_DIR$/controller/getUserByPseudo.php" />
+        <option value="$PROJECT_DIR$/model/userManager.php" />
+        <option value="$PROJECT_DIR$/view/homePage.php" />
+        <option value="$PROJECT_DIR$/controller/getUserByEmail.php" />
+        <option value="$PROJECT_DIR$/view/search.php" />
+        <option value="$PROJECT_DIR$/view/modals.php" />
+        <option value="$PROJECT_DIR$/public/js/function.js" />
+        <option value="$PROJECT_DIR$/view/tablaturePage.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="127.0.0.1" id="fd659f16-abe1-463f-973a-951daeb34516" name="127.0.0.1" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1720" />
+    <option name="y" value="-93" />
+    <option name="width" value="2213" />
+    <option name="height" value="1087" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SimpleTab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleTab" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SimpleTab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleTab" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SimpleTab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleTab" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="model" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SimpleTab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleTab" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SimpleTab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleTab" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SimpleTab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleTab" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SimpleTab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleTab" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tabs" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="SimpleTab" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleTab" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/SimpleTab/SimpleTab/dev/SimpleTab/view/tablaturePage.php" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="two.files.diff.last.used.file" value="$USER_HOME$/Downloads/SimpleTab/SimpleTab/dev/SimpleTab/view/tablaturePage.php" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SAUSERR_INFO\Documents\GitHub\SimpleTab\dev\SimpleTab\tabs" />
+      <recent name="C:\Users\SAUSERR_INFO\Documents\GitHub\SimpleTab\dev\SimpleTab\js" />
+      <recent name="C:\Users\SAUSERR_INFO\Documents\GitHub\SimpleTab\dev\SimpleTab\config" />
+      <recent name="C:\Users\SAUSERR_INFO\Documents\GitHub\SimpleTab\dev\SimpleTab\Model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SAUSERR_INFO\Documents\GitHub\SimpleTab\dev\SimpleTab\public" />
+      <recent name="C:\Users\SAUSERR_INFO\Documents\GitHub\SimpleTab\dev\SimpleTab\Model" />
+      <recent name="C:\Users\SAUSERR_INFO\Documents\GitHub\SimpleTab\dev\SimpleTab\Manager" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="517dd3bd-e57c-49fa-8ddd-4df17057e1ed" name="Default" comment="" />
+      <created>1525758870446</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1525758870446</updated>
+      <workItem from="1525758872162" duration="597000" />
+      <workItem from="1525874687893" duration="2205000" />
+      <workItem from="1526016910427" duration="2829000" />
+      <workItem from="1526020074452" duration="22952000" />
+      <workItem from="1526362959469" duration="26461000" />
+      <workItem from="1526449303063" duration="25576000" />
+      <workItem from="1526535188132" duration="26082000" />
+      <workItem from="1526621498790" duration="24952000" />
+      <workItem from="1526967233398" duration="24876000" />
+      <workItem from="1527053981052" duration="19593000" />
+      <workItem from="1527139485978" duration="14331000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="190454000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1912" y="-93" width="1696" height="1026" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19926651" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34157303" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21847826" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23804347" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17377399" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23804347" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34157303" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21847826" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="php">
+          <url>file://$PROJECT_DIR$/controller/getTabAndRelatedArtist.php</url>
+          <line>19</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint type="php">
+          <url>file://$PROJECT_DIR$/controller/addTab.php</url>
+          <line>56</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint type="php">
+          <url>file://$PROJECT_DIR$/controller/addRate.php</url>
+          <line>20</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/model/userManager.php</url>
+          <line>94</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="70" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/utilities.js" />
+    <entry file="file://$PROJECT_DIR$/public/images/search.png" />
+    <entry file="file://$PROJECT_DIR$/config/conparam.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/addRate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/addComment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/addTab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/addUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/approuveTab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/deleteTabById.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/deleteUserById.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/destroySession.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getAllNonApprouvedTab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getArtistNames.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getCommentsByTab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getDifficultyInLetters.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getInfosTab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getRateByTabId.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getRateByUserId.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getTabAndRelatedArtist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getTabById.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getTabByTitle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getUsersAndNbTabPosted.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/identifyUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/updateTabRate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getTabAndRelatedArtistByName.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getTabAndRelatedArtistPostedByUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getTabByArtist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/artistManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+            <marker date="1527152326676" expanded="true" signature="1351:1399" ph="SELECT artis... artists" />
+            <marker date="1527152326676" expanded="true" signature="1921:1985" ph="INSERT INTO simpletab.artists... " />
+            <marker date="1527152326676" expanded="true" signature="2468:2538" ph="SELECT * FRO... artists" />
+            <marker date="1527152326676" expanded="true" signature="2481:2500" ph="INSERT INTO simpletab.artists... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/commentManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding>
+            <marker date="1527152327788" expanded="true" signature="1537:1673" ph="SELECT * FRO... comments" />
+            <marker date="1527152327788" expanded="true" signature="2251:2375" ph="INSERT INTO simpletab.comments... " />
+            <marker date="1527152327788" expanded="true" signature="2979:3051" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/rateManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding>
+            <marker date="1527152327388" expanded="true" signature="1338:1367" ph="SELECT * FRO... rates" />
+            <marker date="1527152327388" expanded="true" signature="1844:1942" ph="INSERT INTO simpletab.artists... " />
+            <marker date="1527152327388" expanded="true" signature="2566:2633" ph="SELECT * FRO... rates" />
+            <marker date="1527152327388" expanded="true" signature="3176:3241" ph="SELECT * FRO... rates" />
+            <marker date="1527152327388" expanded="true" signature="3753:3819" ph="DELETE FROM " />
+            <marker date="1527152327388" expanded="true" signature="4161:4224" ph="SELECT * FRO... rates" />
+            <marker date="1527152327388" expanded="true" signature="4161:4249" ph="SELECT ROUND... rates" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/tablature.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/rate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="11" lean-forward="false" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tabs/77.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/artist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/tablatureAndUserManagerPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="52" lean-forward="false" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+          <folding>
+            <marker date="1527152647662" expanded="true" signature="331:836" ph="..." />
+            <marker date="1527152647662" expanded="true" signature="655:807" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getUserByPseudo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="45" column="2" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="45" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/userManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="90" column="26" lean-forward="false" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+            <marker date="1527158633925" expanded="true" signature="1633:1695" ph="SELECT * FRO... users" />
+            <marker date="1527158633925" expanded="true" signature="2154:2209" ph="SELECT * FRO... users" />
+            <marker date="1527158633925" expanded="true" signature="2154:2214" ph="SELECT * FRO... users" />
+            <marker date="1527158633925" expanded="true" signature="2737:2854" ph="SELECT * FRO... users" />
+            <marker date="1527158633925" expanded="true" signature="3435:3880" ph="SELECT users... users" />
+            <marker date="1527158633925" expanded="true" signature="4466:4613" ph="INSERT INTO users... " />
+            <marker date="1527158633925" expanded="true" signature="4483:4484" ph="SELECT * FRO... tablatures" />
+            <marker date="1527158633925" expanded="true" signature="5435:5568" ph="SELECT idTab... tablatures" />
+            <marker date="1527158633925" expanded="true" signature="6173:6231" ph="DELETE FROM " />
+            <marker date="1527158633925" expanded="true" signature="6763:6818" ph="SELECT * FRO... tablatures" />
+            <marker date="1527158633925" expanded="true" signature="6763:6868" ph="SELECT * FRO... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getUserByEmail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/homePage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="165" column="8" lean-forward="false" selection-start-line="165" selection-start-column="8" selection-end-line="210" selection-end-column="11" />
+          <folding>
+            <element signature="e#6#126#0#PHP" expanded="true" />
+            <marker date="1527159959284" expanded="true" signature="301:806" ph="..." />
+            <marker date="1527159959284" expanded="true" signature="625:777" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/getUserById.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="49" column="2" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="49" selection-end-column="2" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="96" column="43" lean-forward="true" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
+          <folding>
+            <element signature="e#6#135#0#PHP" expanded="true" />
+            <marker date="1527160430482" expanded="true" signature="311:816" ph="..." />
+            <marker date="1527160430482" expanded="true" signature="635:787" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/tablatureManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4871">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding>
+            <marker date="1527152327139" expanded="true" signature="1578:1644" ph="SELECT * FRO... tablatures" />
+            <marker date="1527152327139" expanded="true" signature="2162:2300" ph="SELECT * FRO... tablatures" />
+            <marker date="1527152327139" expanded="true" signature="2851:3030" ph="SELECT * FRO... tablatures" />
+            <marker date="1527152327139" expanded="true" signature="3577:3715" ph="SELECT * FRO... tablatures" />
+            <marker date="1527152327139" expanded="true" signature="4163:4310" ph="SELECT * FRO... tablatures" />
+            <marker date="1527152327139" expanded="true" signature="4887:5068" ph="SELECT * FRO... tablatures" />
+            <marker date="1527152327139" expanded="true" signature="4887:5134" ph="SELECT * FRO... tablatures" />
+            <marker date="1527152327139" expanded="true" signature="5677:5750" ph="SELECT * FRO... tablatures" />
+            <marker date="1527152327139" expanded="true" signature="6687:6843" ph="INSERT INTO simpletab.tablatures... " />
+            <marker date="1527152327139" expanded="true" signature="7311:7379" ph="UPDATE simpl... " />
+            <marker date="1527152327139" expanded="true" signature="7797:8115" ph="..." />
+            <marker date="1527152327139" expanded="true" signature="7813:8060" ph="..." />
+            <marker date="1527152327139" expanded="true" signature="8074:8107" ph="..." />
+            <marker date="1527152327139" expanded="true" signature="8986:9118" ph="UPDATE simpl... " />
+            <marker date="1527152327139" expanded="true" signature="9656:9974" ph="..." />
+            <marker date="1527152327139" expanded="true" signature="9672:9919" ph="..." />
+            <marker date="1527152327139" expanded="true" signature="9933:9966" ph="..." />
+            <marker date="1527152327139" expanded="true" signature="10768:10823" ph="DELETE FROM " />
+            <marker date="1527152327139" expanded="true" signature="11542:11610" ph="UPDATE simpl... " />
+            <marker date="1527152327139" expanded="true" signature="11960:12037" ph="UPDATE simpl... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/modifyTabById.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/tablatureManagerPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1386">
+          <caret line="5" column="49" lean-forward="false" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+          <folding>
+            <marker date="1527160430393" expanded="true" signature="335:840" ph="..." />
+            <marker date="1527160430393" expanded="true" signature="659:811" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/modals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="89" column="18" lean-forward="true" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
+          <folding>
+            <element signature="e#6#118#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/function.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-73">
+          <caret line="318" column="5" lean-forward="false" selection-start-line="318" selection-start-column="5" selection-end-line="318" selection-end-column="5" />
+          <folding>
+            <marker date="1527165176642" expanded="true" signature="6487:6496" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="6544:6570" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="6710:6719" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="6811:6837" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="8681:8690" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="8738:8764" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="8883:8892" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="8940:8966" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="10250:10259" ph="..." />
+            <marker date="1527165176642" expanded="true" signature="10307:10333" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/tablaturePage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="238" column="32" lean-forward="false" selection-start-line="238" selection-start-column="32" selection-end-line="238" selection-end-column="32" />
+          <folding>
+            <element signature="e#6#136#0#PHP" expanded="true" />
+            <marker date="1527171713184" expanded="false" signature="793:823" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="824:2584" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="849:1523" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="866:1512" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="883:968" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="985:1076" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1093:1184" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1201:1285" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1302:1389" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1406:1495" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1546:1726" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1563:1715" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1580:1698" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1601:1664" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1774:2577" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1798:2570" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="1806:2099" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="2229:2290" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="2319:2557" ph="..." />
+            <marker date="1527171713184" expanded="false" signature="2366:2378" ph="..." />
+            <marker date="1527171713184" expanded="false" signature="2472:2502" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="2676:2895" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="3042:3547" ph="..." />
+            <marker date="1527171713184" expanded="true" signature="3366:3518" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

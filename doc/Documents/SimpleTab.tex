@@ -1,0 +1,170 @@
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !!!!!!!!!!!!!!!!!!A REMETTRE DANS LE DOSSIER DOC/CODE SOURCE POUR QUE CA FONCTIONNE !!!!!!!!!!!!!!!!!!!!!!!!!
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\documentclass[a4paper,12pt]{report}
+
+\usepackage[francais]{babel} % Typographie
+\usepackage[T1]{fontenc}     % Saisie en
+\usepackage[latin1]{inputenc} % français
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{blindtext}
+
+%% Réglages généraux
+\usepackage[left=2.5cm, right=2cm, top=1.5cm, bottom=1.5cm]{geometry} % taille de la feuille
+\usepackage{fancyhdr} % Titre courant
+\usepackage{lastpage} % pour avoir \pageref{LastPage} : le nombre total de pages du doc
+
+
+%infos sur le document : auteur, titre, version (utilisées en page de garde, pied de page, filigrane...)
+\newcommand{\docauthor}{Romain Sauser}
+\newcommand{\doctitle}{SimpleTab.tex}
+%----------------------------------------------------------
+
+% Entête et pied de page.
+\pagestyle{fancy}
+\fancyfoot[CO,CE]{\footnotesize\thepage~/~\pageref{LastPage}}
+\fancyfoot[RO,RE]{\scriptsize\emph{\docauthor{}}}
+\fancyfoot[LO,LE]{\scriptsize\emph{\doctitle{}}}
+\fancyhead[LO,CO,RO]{}
+
+\include{inc_listings_php}
+
+% le document commence réellement ici
+\begin{document}
+
+\title{\textbf{Code Source de l'application SimpleTab}}
+\author{Romain Sauser \\ I.DA-P4A \\CFPT INFORMATIQUE}
+\date{24.05.2018}
+\maketitle 
+
+\tableofcontents
+
+\chapter{SimpleTab}
+
+
+\section{config}
+\subsection{conparam.php}
+\lstinputlisting{../../dev/SimpleTab/config/conparam.php}
+
+
+\section{controller}
+\subsection{getUserByEmail.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getUserByEmail.php}
+\subsection{getUserByPseudo.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getUserByPseudo.php}
+\subsection{getRateByTabId.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getRateByTabId.php}
+\subsection{deleteUserById.php}
+\lstinputlisting{../../dev/SimpleTab/controller/deleteUserById.php}
+\subsection{getInfosTab.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getInfosTab.php}
+\subsection{getTabAndRelatedArtistByName.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getTabAndRelatedArtistByName.php}
+\subsection{updateTabRate.php}
+\lstinputlisting{../../dev/SimpleTab/controller/updateTabRate.php}
+\subsection{approuveTab.php}
+\lstinputlisting{../../dev/SimpleTab/controller/approuveTab.php}
+\subsection{getAllNonApprouvedTab.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getAllNonApprouvedTab.php}
+\subsection{getUserById.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getUserById.php}
+\subsection{identifyUser.php}
+\lstinputlisting{../../dev/SimpleTab/controller/identifyUser.php}
+\subsection{getTabAndRelatedArtistPostedByUser.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getTabAndRelatedArtistPostedByUser.php}
+\subsection{getUsersAndNbTabPosted.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getUsersAndNbTabPosted.php}
+\subsection{getRateByUserId.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getRateByUserId.php}
+\subsection{getArtistNames.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getArtistNames.php}
+\subsection{getTabById.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getTabById.php}
+\subsection{modifyTabById.php}
+\lstinputlisting{../../dev/SimpleTab/controller/modifyTabById.php}
+\subsection{getTabAndRelatedArtist.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getTabAndRelatedArtist.php}
+\subsection{getTabByArtist.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getTabByArtist.php}
+\subsection{addTab.php}
+\lstinputlisting{../../dev/SimpleTab/controller/addTab.php}
+\subsection{deleteTabById.php}
+\lstinputlisting{../../dev/SimpleTab/controller/deleteTabById.php}
+\subsection{getTabByTitle.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getTabByTitle.php}
+\subsection{addComment.php}
+\lstinputlisting{../../dev/SimpleTab/controller/addComment.php}
+\subsection{getDifficultyInLetters.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getDifficultyInLetters.php}
+\subsection{addUser.php}
+\lstinputlisting{../../dev/SimpleTab/controller/addUser.php}
+\subsection{getCommentsByTab.php}
+\lstinputlisting{../../dev/SimpleTab/controller/getCommentsByTab.php}
+\subsection{addRate.php}
+\lstinputlisting{../../dev/SimpleTab/controller/addRate.php}
+\subsection{destroySession.php}
+\lstinputlisting{../../dev/SimpleTab/controller/destroySession.php}
+
+
+\section{model}
+\subsection{userManager.php}
+\lstinputlisting{../../dev/SimpleTab/model/userManager.php}
+\subsection{tablatureManager.php}
+\lstinputlisting{../../dev/SimpleTab/model/tablatureManager.php}
+\subsection{commentManager.php}
+\lstinputlisting{../../dev/SimpleTab/model/commentManager.php}
+\subsection{rateManager.php}
+\lstinputlisting{../../dev/SimpleTab/model/rateManager.php}
+\subsection{artistManager.php}
+\lstinputlisting{../../dev/SimpleTab/model/artistManager.php}
+\subsection{rate.php}
+\lstinputlisting{../../dev/SimpleTab/model/rate.php}
+\subsection{tablature.php}
+\lstinputlisting{../../dev/SimpleTab/model/tablature.php}
+\subsection{user.php}
+\lstinputlisting{../../dev/SimpleTab/model/user.php}
+\subsection{comment.php}
+\lstinputlisting{../../dev/SimpleTab/model/comment.php}
+\subsection{Artist.php}
+\lstinputlisting{../../dev/SimpleTab/model/Artist.php}
+\subsection{database.php}
+\lstinputlisting{../../dev/SimpleTab/model/database.php}
+
+\section{public}
+\subsection{css}
+\subsubsection{style.css}
+\lstinputlisting{../../dev/SimpleTab/public/css/style.css}
+\subsection{js}
+\subsubsection{function.js}
+\lstinputlisting{../../dev/SimpleTab/public/js/function.js}
+
+\section{tabs}
+\subsection{81.php}
+\lstinputlisting{../../dev/SimpleTab/tabs/81.php}
+\subsection{83.php}
+\lstinputlisting{../../dev/SimpleTab/tabs/83.php}
+\subsection{84.php}
+\lstinputlisting{../../dev/SimpleTab/tabs/84.php}
+
+
+\section{view}
+\subsection{homePage.php}
+\lstinputlisting{../../dev/SimpleTab/view/homePage.php}
+\subsection{search.php}
+\lstinputlisting{../../dev/SimpleTab/view/search.php}
+\subsection{tablaturePage.php}
+\lstinputlisting{../../dev/SimpleTab/view/tablaturePage.php}
+\subsection{tablatureManagerPage.php}
+\lstinputlisting{../../dev/SimpleTab/view/tablatureManagerPage.php}
+\subsection{modals.php}
+\lstinputlisting{../../dev/SimpleTab/view/modals.php}
+\subsection{tablatureAndUserManagerPage.php}
+\lstinputlisting{../../dev/SimpleTab/view/tablatureAndUserManagerPage.php}
+
+
+
+
+
+
+\end{document}

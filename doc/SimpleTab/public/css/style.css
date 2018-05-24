@@ -1,0 +1,13 @@
+/**
+ * Auteur: romain.ssr@eduge.ch
+ * Date : 18.05.2018
+ * projet: SimpleTab
+ * description: feuille de style
+ */
+.artistName{
+color : darkred;
+}
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
